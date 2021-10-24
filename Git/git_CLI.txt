@@ -29,7 +29,7 @@ git config --global user.email "User_Email.com"
     - use 'cd' 'pwd' to navigate to wished dir on pc
     - 'git clone "https://github.com/PIEthonista/Repo_Dir" '
     - Username: PIEthonista
-    - Auth: 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
+    - Auth: ------
 
 Everytime you wish to push the changes you made:
 

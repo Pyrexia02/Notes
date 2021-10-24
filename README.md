@@ -1,5 +1,6 @@
 Hi there! Notes about programming will be shared here ❤️
 Download Github Desktop if you don't wanna work your ass off 😉
+Optionally you can also download Atom Text Editor, works with all files 😍
 
 1. Clone this repo to your local repo (PC)
 2. Edit the files to your liking or update info on you PC.

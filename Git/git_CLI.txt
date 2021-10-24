@@ -1,0 +1,61 @@
+git / git bash / github from Command Line Interface
+https://www.youtube.com/channel/UCoA_n_EOfNLZ-RxS4XT30FA
+(repo records all changes/commits made)
+
+=== Clone vs Fork ===
+When you fork a repository, you create a copy of the original repository (upstream repository)
+but the repository remains on your GitHub account. Whereas, when you clone a repository, the
+repository is copied on to your local machine.
+
+=== Branching ===
+https://zepel.io/blog/5-git-workflows-to-improve-development/?utm_source=zepelblog&utm_medium=text&utm_campaign=how-to-create-branch-in-github
+Branches in GitHub (and Git) allow you to take the original codebase, create an exact replica
+of it, make changes, and then submit your changes to be merged into the original code base.
+This way, you can make sure the final code base is always bug-free.
+
+=== Pull Requests ===
+Pull requests let you tell others about changes you've pushed to a branch in a repository on
+GitHub. Once a pull request is opened, you can discuss and review the potential changes with
+collaborators and add follow-up commits before your changes are merged into the base branch.
+
+
+Setup:
+git config --global user.name "User_Name"
+git config --global user.email "User_Email.com"
+
+1. MacOS: type 'bash' to open git bash
+   Windows: Start menu search: Git Bash
+2. Cloning git repo to pc
+    - use 'cd' 'pwd' to navigate to wished dir on pc
+    - 'git clone "https://github.com/PIEthonista/Repo_Dir" '
+    - Username: PIEthonista
+    - Auth: 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
+
+Everytime you wish to push the changes you made:
+
+3. Check status (work tree, commits made)
+    - use 'cd' to navigate to the folder in the cloned repo
+    - 'git status'
+4. Add new files to repo record (paste into repo folder first)
+    - 'git add filename.extension'
+5. Commit changes (snapshots of currently staged changes, will nvr change untilyou ask)
+    - 'git commit'
+    - 'git commit -m "optional message about change" '
+6. Push changes/files/repo to global server
+    - 'git push'
+
+To avoid every user from committing changes at the same time to the
+main branch, we create a sub-branch, where changes are made separately,
+which can be then merged to combine and test.
+
+1. Displays a record of the commits in a Git repository
+    - 'git log'
+2. Pulls the master branch from the remote called origin into your current branch, only
+   affecting your current branch, not your local master branch.
+    - 'git pull origin master'
+3. Undo change at global server
+    - 'git revert Commit_ID_from_Log'
+    - 'git push'
+    i.e. 00957758d2da081c3b32e77d4d350f25934ee85f
+4. download content from remote repository, update the local repository to match that content
+    - 'git pull'

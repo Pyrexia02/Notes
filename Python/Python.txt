@@ -1,0 +1,2109 @@
+Reference webs
+https://www.w3schools.com/python/default.asp
+https://www.py4e.com
+https://www.youtube.com/watch?v=8DvywoWv6fI
+https://realpython.com
+If you're using atom text editor, you can use the find tool to search for specific topics, most of them have a tag prepended: ~!topic
+Both ~!solve and ~!? needs further studying and solving.
+HTML ~!color picker: https://www.w3schools.com/colors/colors_picker.asp?colorhex=FA8072
+             viewer: https://www.w3schools.com/colors/colors_names.asp
+   Characters Lists: https://www.w3schools.com/charsets/default.asp
+============================================================================================================================================ ~!HARDWARE
+
+CPU              - 3.2Ghz= asks what's next 3.2G times in 1 sec
+Input Device     - keyboard... etc
+Output Device    - screen.. etc
+Main memory      - Fast small temporary storage, lost on reboot, aka RAM (you live here, your code answers the "what's next" ques)
+Secondary memory - Slower large permanent storage (your code live here)
+
+============================================================================================================================================ ~!TERMINAL
+// ~!command
+
+ pip install library_name
+ python --version / python3 --version
+ pwd : shows current location (ie. /Users/gohyixian/Desktop/py4e)
+ clear : to clear commands in the CLI window
+ cd : to change directory.With no arguments, it takes you to home directory. cd .. to go up the tree.
+ cd - : revert to previous directory
+ ls : list files in curent dir
+ mkdir : to create a new directory.
+ touch : creates an empty file.
+ cp : to copy files. Use -r flag for recursive copy of one directory contents to another.
+ rm : to remove a file. Use -r to remove the entire directory contents.
+ mv : to move files.
+ date : to print the date
+ echo : to print a message
+ python3 file_to_be_run.py
+ python3 : run python lang (>>>)
+ exit() / quit()
+
+
+============================================================================================================================================ ~!PY TO EXE
+// ~!.exe ~!exe
+
+for windows
+terminal install: pip install auto-py-to-exe module
+run from terminal: auto-py-to-exe
+ref: https://pypi.org/project/auto-py-to-exe/
+     https://www.youtube.com/watch?v=OZSZHmWSOeM
+     https://nitratine.net/blog/post/issues-when-using-auto-py-to-exe/
+============================================================================================================================================ ~!PY TO APP
+// ~!.app ~!app
+
+for MacOS
+terminal install: pip install py2app
+run: create a setup.py file
+
+---------------------------------
+#run from terminal or IDE: python3 setup.py py2app
+from setuptools import setup
+APP = ['file_to_be_converted.py']
+OPTIONS = {
+    'argv_emulation' : True,
+}
+setup(
+    app = APP,
+    options = {'py2app' : OPTIONS},
+    setup_requires = ['py2app'],
+)
+---------------------------------
+from setuptools import setup
+setup(
+    app=["myscript.py"],
+    setup_requires=["py2app"],
+)
+---------------------------------
+
+run from terminal or IDE: python3 setup.py py2app
+.app directory: same as setup.py, in dist
+
+ref: https://www.youtube.com/watch?v=IIAlkQEw8Gc
+     https://pypi.org/project/py2app/
+
+============================================================================================================================================ ~!RESERVED WORDS
+// ~!keywords
+
+False   class   return  is      finally
+None    if      for     lambda  continue
+True    def     from    while   nonlocal
+and     del     global  not     with
+as      elif    try     or      yield
+assert  else    import  pass
+break   except  in      raise
+
+------- 'is' vs '==' -------
+There is a simple rule of thumb to tell you when to use '==' or 'is'.
+
+'==' is for value equality. Use it when you would like to know if two objects have the same VALUE.
+'is' is for reference equality. Use it when you would like to know if two references refer to the same OBJECT.
+In general, when you are comparing something to a simple type, you are usually checking for value equality, so you should use '=='.
+[]    a = [1, 2, 3]
+[]    b = a
+[]    b is a
+[]    >>> True
+[]    b == a
+[]    >>> True
+[]
+[] # Make a new copy of list `a` via the slice operator,
+[] # and assign it to variable `b`
+[]    b = a[:]
+[]    b is a
+[]    >>> False
+[]    b == a
+[]    >>> True
+
+
+============================================================================================================================================ ~!VARIABLES
+
+variables (does not start with Num123, #, contain . - = ... etc)
+Assign multiple values:
+  x = y = z = "Orange"
+
+  fruits = ["apple", "banana", "cherry"]
+  x, y, z = fruits
+
+
+LOCAL Var : value only changes in function def
+  x = "awesome"
+  def myfunc():
+    x = "fantastic"           #x defaults to local var
+    print("Python is " + x)
+  myfunc()
+  print("Python is " + x)
+  >>> Python is fantastic
+      Python is awesome
+
+
+GLOBAL Var
+  x = "awesome"
+  def myfunc():
+    global x                  #x set to global scope
+    x = "fantastic"
+  myfunc()
+  print("Python is " + x)
+  >>> Python is fantastic
+
+============================================================================================================================================ ~!OPERATORS
+
+numeric expressions (+ - * / **power %remainder)
+Operator Precedence (PEMDAS)
+  ()        Parenthesis
+  **        Exp
+  * / // %  Mul,Div,Floored-Div,Modulus(Returns remainder, i.e. 5%2=1)
+  + -       Add, Sub
+  Left to Right
+
+-----Comparison Operators-----   > < >= <= == !=
+
+-----Logical Operators--------   and or not()
+
+-----Assignment Operators-----
+=	    x = 5     x = 5
++=	    x += 3	  x = x + 3
+-=	    x -= 3	  x = x - 3
+*=	    x *= 3	  x = x * 3
+/=	    x /= 3	  x = x / 3
+%=	    x %= 3	  x = x % 3
+//=	    x //= 3   x = x // 3
+**=	    x **= 3   x = x ** 3
+
+
+// ~!in ~!not
+-----Membership Operators-----
+Membership operators are used to test if a sequence is presented in an object:
+
+in      	Returns True if a sequence with the specified value is present in the object	    x in y
+not in	    Returns True if a sequence with the specified value is not present in the object	x not in y
+
+     x = ["apple", "banana"]
+     print("pineapple" not in x)
+      # returns True because a sequence with the value "pineapple" is not in the list
+
+
+
+// ~!is ~!not
+-----Identity Operators-----
+Used to compare the objects, not if they are equal, but if they are actually the same object, with the same
+memory location. (Compare object, not content;  compare faces, not face organs)
+
+is 	       Returns True if both variables are the same object	          x is y
+is not	   Returns True if both variables are not the same object	      x is not y
+
+    x = ["apple", "banana"]
+    y = ["apple", "banana"]
+    z = x
+
+    print(x is z)
+     # returns True because z is the same object as x
+
+    print(x is y)
+     # returns False because x is not the same object as y, even if they have the same content
+
+    print(x == y)
+     # to demonstrate the difference between "is" and "==": this comparison returns True because x is equal to y
+
+    type(x) is not float
+     # True
+
+    // ~!None
+    if bigcount is None:
+      ...
+    In Python, None keyword is an object, and it is a data type of the class NoneType. We can assign None to any
+    variable, but you cannot create other NoneType objects. Note: All variables that are assigned None point to
+    the same object. New instances of None are not created.
+
+
+// ~!bit ~!byte ~!bitwise
+-----Bitwise Operators-----
+Computers store all kinds of information as a stream of binary digits called bits. Whether you’re working
+with text, images, or videos, they all boil down to ones and zeros. Python’s bitwise operators let you
+manipulate those individual bits of data at the most granular level.
+
+Character	Decimal Code Point (b-10)	  Binary Code Point (b-2)
+   €	            836410	                   10000010101100
+   u	            11710	                   1110101
+
+Variable bit-lengths are problematic. Thus we categorise them into sets of bytes. In UTF-8, a character can take
+from 1 byte (8-0/1) to 4 bytes (32-0/1). Functions below perform operation on a 'bit' basis. The resulting bits
+are then mapped to their respective characters (~!#$%abc123).
+
+NOT             ~       (assignment operation not avail: ~=)    10011100 --> 01100011
+
+AND             &	    x &= a	  x = x & a                     10011100 --> 00010100
+                                                                00110100
+
+OR              |	    x |= a	  x = x | a                     10011100 --> 10111100
+                                                                00110100
+
+XOR             ^	    x ^= a	  x = x ^ a                     10011100 --> 10101000 (same char =0, dif char =1)
+                                                                00110100
+
+Right Shift     >>	    x >>= b	  x = x >> b                    100111   --> 0100111  (adds 0 to the left of bits)
+Left shifts     <<	    x <<= b	  x = x << b                    100111   --> 1001110  (adds 0 to the right of bits)
+
+# a = random character to be performed operation with another character.
+  b = number of 0's to be added.
+
+* Notice that the L/R shift operators changes the lengths of the bits. If the length were to be constrained to a certain
+  value, (i.e. in bytes, we only have 8 bits), we can perform something called ~!bitmask (like in Ps, we call it masking).
+  For example, if you’re working with a single byte, then shifting it to the left should add a 0 to the right of it and
+  discard all the bits that go beyond its left boundary.
+
+  10011101 --> 00111010
+  12345678     2345678
+
+  It’s sort of like looking at an unbounded stream of bits through a fixed-length window. There are a few tricks that
+  let you do this in Python. For example, you can apply a bitmask with the bitwise AND (&) operator:
+
+  39 << 3              39 (b-10) = 100111 (b-2), <<3 = 100111000 = 312 (b-2) 9-bits
+
+  (39 << 3) & 255      (100111000) & 255  =  (100111000) & 11111111  =  111000, or in full form, 00111000  =  56 (b-2)
+                                               12345678
+
+  Shifting 39 (base-10) by three places to the left returns a number higher than the maximum value that you can store on
+  a single byte. It takes nine bits, whereas a byte has only eight. To chop off that one extra bit on the left, you can
+  apply a bitmask with the appropriate value. If you’d like to keep more or fewer bits, then you’ll need to modify the
+  mask value accordingly.
+
+  From: https://realpython.com/python-bitwise-operators
+
+============================================================================================================================================ ~!DATA TYPES
+type() - show data type
+conversion: float(), int(), str(), complex() (<- ->)
+
+Text Type      :	str '', multi-line str ''' ..... '''
+Numeric Types  :	int 3, float 3.0, complex 3+5j    (j = imaginary part)
+Sequence Types :	list [], tuple (), range(3)
+Mapping Type   :	dict {'x':'3'}
+Set Types      :	set {'x', 'y'}, frozenset({'x', 'y'})
+Boolean Type   :	bool (True/False)
+Binary Types   :	bytes b"Hello", bytearray(5), memoryview(bytes(5))
+
+4 BUILT-IN DATA COLLECTIONS (Arrays)
+List is a collection which is ordered and changeable. Allows duplicate members. Can contain different data types within one list.
+Tuple is a collection which is ordered and unchangeable. Allows duplicate members.
+Set is a collection which is unordered and unindexed. No duplicate members.
+Dictionary is a collection which is ordered* and changeable. No duplicate members.
+
+An ~!iterable is any Python object capable of returning its members one at a time, permitting
+it to be iterated over in a for-loop. Familiar examples of iterables include lists, tuples,
+strings, sets, RANGE() ...etc - any such sequence can be iterated over in a for-loop.
+*Can also be converted to an iter object using iter() method.
+*NOTE: iter objs can only be iterated through ONCE.
+
+ITERATOR VS ITERABLE
+Lists, tuples, dictionaries, and sets are all iterable objects. They are iterable containers which you can get an iterator from.
+All these objects have a iter() method which is used to get an iterator. (most likely to access iter functions like iter.next())
+
+============================================================================================================================================ ~!BASIC FUNCTIONS()
+// ~!multiline ~!input ~!range ~!random
+
+01. #comment / eliminate code
+
+02. """multi-line str not assigned to var are ignored, thus can be used as multi-line comments"""
+
+03. print("str", end="", flush=False), end="end with what?", flush=print continuously on same line
+
+04. inp = input('Enter blablabla: ')   #return "str"
+
+05. range(start, end, increment)   #range(6)     : 0-5
+          inclusive, exclusive     #range(2,6)   : 2-5
+                                   #range(2,6,3) : 2,5
+
+06. len( str/list/dict/tup/ typically any python data... )
+
+07. next(iterable, default)
+    *Must be used with iter()-converted iterables.
+    iterable	: Required. An iterable object: str, list, tuple, dict, set...
+    default	    : Optional. An default value to return if the iterable has reached to its end.
+                  Can be used to infinity times.
+    []    mylist = iter(["apple", "banana", "cherry"])
+    []    print(next(mylist, "orange")) >>> apple
+    []    print(next(mylist, "orange")) >>> banana
+    []    print(next(mylist, "orange")) >>> cherry
+    []    print(next(mylist, "orange")) >>> orange
+    []    print(next(mylist, "orange")) >>> orange
+
+08. random number : import random
+                    print(random.randrange(1, 10))      #must specify range
+
+09. isinstance(obj, class)
+    obj : The object that need to be checked as a part of class or not.
+    class : Single class / Single type / (tuple of classes or types), against which object is needed to be checked.
+    Returns : True, if object belongs to the given class/type if single class is passed or any
+              of the classes/types if tuple of classes/types is passed, else returns False.
+              Raises a TypeError if anything other than mentioned valid class type.
+              []
+              []  if isinstance(obj, (str, int)):
+              []      print(obj.value)
+
+10. exit() : exits current python program running.
+
+============================================================================================================================================ ~!DEF FUNCTIONS()
+// ~!define ~!functions ~!def func()
+
+def function_name(params):    #From a function's perspective:
+    ...code...                 A parameter is the variable listed inside the parentheses in the function definition.
+    return?                    An argument is the value that is sent to the function when it is called.
+                               Params: int, str, float, list, ...etc
+
+There are five kinds of parameters:
+
+ 1. Positional-or-Keyword:
+    specifies an argument that can be passed either positionally or as a keyword argument. This is the DEFAULT
+    kind of parameter, for example foo and bar in the following:
+    []
+    []  def func(foo, bar=None): ...
+
+ 2. Positional-Only:
+    specifies an argument that can be supplied only by position. Positional-only parameters can be defined by
+    including a / character in the parameter list of the function definition after them, for example posonly1
+    and posonly2 in the following:
+    []
+    []  def func(posonly1, posonly2, /, positional_or_keyword): ...
+    []           ^^^^^^^^  ^^^^^^^^
+    []  #called without /
+
+ 3. Keyword-Only:
+    specifies an argument that can be supplied only by keyword. Keyword-only parameters can be defined by
+    including a single var-positional parameter or bare * in the parameter list of the function definition
+    before them, for example kw_only1 and kw_only2 in the following:
+    []
+    []  def func(arg, *, kw_only1, kw_only2): ...
+    []                   ^^^^^^^^  ^^^^^^^^
+    []  print(func(args, kw_only1=bla, kw_only2=bla))
+    []  #called without *, key='value' syntax
+
+ 4. Var-Positional:
+    specifies that an arbitrary sequence of positional arguments can be provided (in addition to any positional
+    arguments already accepted by other parameters). This way the function will receive a TUPLE () of arguments,
+    and can access the items accordinglySuch a parameter can be defined by prepending the parameter name with *,
+    for example *param in the following:
+    []
+    []  def func(*param, **kwargs):
+    []           ^^^^^^
+    []      print(param[index])
+    []  func('a', 'b', 'c')
+
+ 5. Var-Keyword:
+    specifies that arbitrarily many keyword arguments can be provided (in addition to any keyword arguments already
+    accepted by other parameters). This way the function will receive a DICTIONARY {} of arguments, and can access
+    the items accordingly. Such a parameter can be defined by prepending the parameter name with **, for example
+    **kwargs in the following:
+    []
+    []  def func(*param, **kwargs):
+    []                   ^^^^^^^^
+    []      print(kwargs['key'])
+    []  func(key='value')
+    []  #key='value' syntax. NO '' for key, but YES for str value. Use = instead of :
+
+
+NOTE-------------------------------------------
+[]    def my_function(child3, child2, child1):         #You can also send arguments with the key='value' syntax.
+[]      print("The youngest child is " + child3)        This way the order of the arguments does not matter.
+[]    my_function(child1 = "Emil", child2 = "Tobias", child3 = "Linus")
+[]    >>> The youngest child is Linus
+
+
+// ~!RECURSION
+A function calling itself, loop through data to reach a result.
+The developer should be very careful with recursion as it can be quite easy to slip into writing a function
+which never terminates, or one that uses excess amounts of memory or processor power. However, when written
+correctly recursion can be a very efficient and mathematically-elegant approach to programming.
+
+In this example, we use factorial as an example, the computer will dig deeper into the equation itself until
+the specific condition is met, thus finding the depth of the equation. Then, starting from the deepest equation,
+it will evaluate them one by one up back to the surface equation.
+For graphical presentation, see (recursion.png).
+
+def fac(n):
+    if n == 1:
+        return n
+    else:
+        return n*fac(n-1)
+
+print(fac(5))
+>>> 120
+
+
+============================================================================================================================================ ~!LAMBDA FUNCTIONS
+
+lambda args : single_expression
+
+A lambda function is a small anonymous function.
+A lambda function can take any number of arguments, but can only have one expression.
+Use lambda functions when an anonymous function is required for a short period of time.
+
+x = lambda a, b, c : a + b + c
+print(x(5, 6, 2))
+
+
+The power of lambda is better shown when you use them as an anonymous function inside another function.
+Say you have a function definition that takes one argument, and that argument will be multiplied with an unknown number
+
+def myfunc(n):
+  return lambda a : a * n
+mytripler = myfunc(3)
+print(mytripler(11))
+>>> 33
+
+sorted_list = sorted(participants_list, key=lambda item: (100-item[1], item[2]))
+
+============================================================================================================================================ ~!CONDITIONAL EXE.
+// ~!loop ~!condition
+
+if ... :
+elif ... :
+elif ... :
+elif ... :
+else : (no condition required)
+
+and/or/is None condition
+
+Short Hand:   print("A") if a > b else print("B")
+
+// ~!pass
+if b > a:   #avoid error for empty conditions
+  pass
+
+
+// ~!break ~!continue
+break      #breaks out of current loop if certain condition is met
+continue   #stop the current iteration of the loop, and continue with the next
+
+
+while i<6:
+    ...
+    i += 1
+
+while True:
+    ...
+    if ... :
+        break
+
+for i in ... :   #char in "str",  item in list[], turn in range(int)
+    ...
+
+for x in [0, 1, 2]:      #for loops cannot be empty, but if you for some reason have a for loop with no content,
+  pass                    put in the pass statement to avoid getting an error, also works with else, def func().
+>>> empty_output
+
+
+============================================================================================================================================ ~!TRY / ~!EXCEPT / ~!THROW ERROR
+//~!try ~!except ~!else ~!finally
+
+#If try works, except is skipped, vice versa. Used to contain error / exception.
+#If try does not work, except is skipped one by one until one works.
+
+try:
+  ...
+except:
+  ...
+except:
+  ...
+finally: / else:
+  ...
+
+#else    : define a block of code to be executed if no errors were raised.
+#finally : if specified, will be executed regardless if the try block raises an error or not.
+
+
+try:
+  print("Hello")
+except:
+  print("Something went wrong")
+else:
+  print("Nothing went wrong")
+>>>
+Hello
+Nothing went wrong
+
+
+try:
+  print(x)
+except:
+  print("Something went wrong")
+finally:
+  print("The 'try except' is finished")
+>>>
+Something went wrong
+The 'try except' is finished
+
+
+--------------------------------------------------------- ~!raiseexception
+#Raising Exceptions / Throw Errors instead of containing them lol using the 'raise' keyword.
+#As a Python developer you can choose to throw an exception if a condition occurs.
+
+x = -1
+if x < 0:
+  raise Exception("Sorry, no numbers below zero")
+>>>
+Traceback (most recent call last):
+  File "demo_ref_keyword_raise.py", line 4, in <module>
+    raise Exception("Sorry, no numbers below zero")
+Exception: Sorry, no numbers below zero          <---
+
+
+x = "hello"
+if not(type(x)) is int:
+  raise TypeError("Only integers are allowed")
+>>>
+Traceback (most recent call last):
+  File "demo_ref_keyword_raise2.py", line 4, in <module>
+    raise TypeError("Only integers are allowed")
+TypeError: Only integers are allowed             <---
+
+list of error types:
+https://docs.python.org/3/library/exceptions.html
+
+============================================================================================================================================ ~!INDEX
+Everything in python starts with index 0 in forward direction, -1 for the first item starting in backwards direction.
+
+string_example = 'abcdefg'
+           IND :  0123456
+                 -7654321
+
+this applies for String '',
+                 List [],
+                 Tuple (): nested ones ((a,b),(c,d)) accessed using: tuple_name[ind][ind][ind]        ~!nested
+
+Why only these few? see Data Types. PS: only data types that are indexed have this function.
+
+
+// ~!indextrick ~!indexsyntax ~![::]
+Index Syntax: [begin:end:step]
+                          ^ defaults to 1 step, can be negative so it works in the backwards direction
+
+print('Hello World'[::-1])
+>>> dlroW olleH
+#A slice that steps backwards: Create a slice that starts at the end of the string, and moves backwards.
+This is extended slice syntax. It works by doing [begin:end:step] - by leaving begin and end off and
+specifying a step of -1, it reverses a string.
+
+print(int('12345'[::-1]))
+>>> 54321    #type = <class 'int'>
+This indexing function works as a whole, not step by step.
+
+
+Detailed: https://www.digitalocean.com/community/tutorials/how-to-index-and-slice-strings-in-python-3
+
+
+============================================================================================================================================ ~!REGEX / ~!ESCAPE CHAR
+
+import re
+
+>>> More detailed info at:
+    https://docs.python.org/3/howto/regex.html
+    https://docs.python.org/3/library/re.html
+    https://www.tutorialspoint.com/python3/python_reg_expressions.htm
+
+>>> METACHARACTERS // ~!metacharacter has special functions in regex
+    . ^ $ * + ? { } [ ] \ | ( )
+    #Use \ to indicate special forms or to allow metacharacters to be
+     used without invoking their special meaning. (i.e. '\$' matches "$")
+
+    + add
+    - sub
+    * mul
+    / div
+    // floored div  eg//: 59//60 = 0
+    % remainder
+    ** exp/power
+
+------------------------------------------------------------------------
+CHUCK'S CHEAT SHEET QUICK GUIDE
+
+====== Extraction / Group ======
+[]    (	        Indicates where string extraction is to start
+[]    )	        Indicates where string extraction is to end
+
+====== Used with characters: 'char<regex>' ======
+[]    ^	        Starts with ('^startswith')
+[]    $	        Ends with ('endswith$')
+[]    *	        >=0   Repeats a character zero or more times
+[]    *?	    >=0m  Repeats a character zero or more times (NON-GREEDY: takes minimum)
+[]    +	        >=1   Repeats a character one or more times
+[]    +?	    >=1m  Repeats a character one or more times (NON-GREEDY: takes minimum)
+[]    ?         0/1   Repeats a character zero or one time only (i.e. 'ab?' matches either 'a' or 'ab')
+[]    ??        0/1m  Repeats a character zero or one time only (NON-GREEDY: takes minimum)
+[]    {m}       Specifies that exactly m copies of the previous RE should be matched. (i.e. a{6})
+[]    {m,n}     Character repetition: min m, max n times. (i.e. a{0,} a min 0 max infinity)
+[]    {m,n}?    NON-GREEDY version. (i.e. 'aaaaa': a{3,5} matches 5'a', a{3,5}? matches 3'a')
+NOTE: ? means NON-GREEDY: takes minimum
+
+====== Matches Characters ======
+[]    .	          Matches any character (except newline)
+[]    A|B|C       Matches either A or B, tries to match A first, if can't then B, C (NON-GREEDY: takes minimum)
+[]    [aeiou]     Matches a single character in the listed set
+[]    [^abc]      Matches a single character NOT in the listed set
+[]    [a-z0-9]    The set of characters can include a range
+[]    [0-2][5-9]  Matches any two-digit numbers, i.e. 16
+[]    [+]         In sets[] + * . | () $ {} has no special meaning, returns a match for + char
+[]
+[]    \d            Matches any decimal digit; this is equivalent to the class [0-9].
+[]    \D            Matches any NON-DIGIT character; this is equivalent to the class [^0-9].
+[]    \s            Matches any whitespace character; this is equivalent to the class [ \t\n\r\f\v].
+[]    \S            Matches any NON-WHITESPACE character; this is equivalent to the class [^ \t\n\r\f\v].
+[]    \w            Matches any alphanumeric character & _; this is equivalent to the class [a-zA-Z0-9_].
+[]    \W            Matches any NON-ALPHANUMERIC character; this is equivalent to the class [^a-zA-Z0-9_].
+[]    \A   -  STR.  Matches specified characters that are at the beginning of the STRING.
+[]                    (i.e. '\AThe' matches "The rain in Spain")
+[]                                           ^^^
+[]    \Z   -  STR.  Matches specified characters at the end of the STRING.
+[]                    (i.e. 'Spain\Z' matches "The rain in Spain")
+[]                                                         ^^^^^
+[]    \b  RAW WRD.  Matches specified characters that are at the beginning or at the end of a WORD.
+[]    		        (i.e. r'\bain' matches "ain't that great? ain't... ")
+[]                                          ^^^               ^^^
+[]                  (i.e. r'ain\b' matches "The rain in Spain")
+[]                                               ^^^      ^^^
+[]    \B  RAW WRD.  Matches specified characters that are NOT at the beginning or the end of a WORD.
+[]    	            (i.e. r'\Bain' matches "The rain in Spain"
+[]                                               ^^^      ^^^
+NOTE: Python RAW string is created by prefixing a string literal with 'r' or 'R'.
+Python raw string treats backslash (\) as a literal character. This is useful
+when we want to have a string that contains backslash and don't want it to
+be treated as an escape character. (\b \B has special meanings as esc chars.)
+
+
+
+====== Methods ======
+import re
+NOTE: also works with MULTI-LINE strings
+NOTE: some patterns might have a few subgroups / extraction points '(pa)tt(e)r(n)'
+      Each subgroup returns a substring or None.
+      Thus, a match object can hold a few substrings.
+
+[]    re.compile('patt', flags=0)	                     *Compile a RE pattern into a RE object, used for .match() .search() & etc.
+[]                                                        Usefull if pattern is to be used more than once.
+[]                                                        [] patt = re.compile('pattern')  ~=  [] result = re.match('pattern', str)
+[]                                                        [] result = patt.match(str)          []
+[]
+[]    re.match('patt', str, flags=0)                     *Returns a MATCH OBJECT if there is a match at the BEGINNING of string.
+[]                                                        (i.e. 'Beginning of string') Returns None even if pattern found at middle
+[]                                                               ^ L --> R             of string.
+[]                                                        Ref: https://docs.python.org/3/library/re.html#search-vs-match
+[]
+[]    re.search('patt', str, flags=0)                    *Returns a MATCH OBJECT if there is a match anywhere in the string.
+[]                                                       If there is more than one match, only the FIRST occurrence of the match
+[]                                                        will be returned. Returns NONE value is no match is found.
+[]
+[]    re.fullmatch(pattern, string, flags=0)             *Returns a MATCH OBJECT if the whole string matches the regular
+[]                                                        expression pattern. Returns None if the string does not match the pattern.
+[]
+[]    re.findall('patt', str, flags=0)                   *Returns a LIST of all matches.
+[]
+[]    re.split('patt', str, maxsplit=0, flags=0)         *Returns a LIST where the string has been split at each match
+[]                                                        maxsplit: max num of occurence of 'pattern' allowed
+[]                                                        []  print(re.split('ain', 'the rain in spain'))
+[]                                                        []  >>> ['the r', ' in sp', '']
+[]
+[]    re.sub('patt', 'repl', string, count=0, flags=0)   *Replaces one or many matches with a string
+[]                                                        count: max num of replacements allowed
+[]
+[]    re.subn('patt', 'repl', string, count=0, flags=0)  *Same as sub(), but returns a TUPLE (new_string, num_of_subs_made).
+[]
+[]    re.finditer('patt', str, flags=0)                  *Find all substrings where the RE matches, and returns them as an ITER OBJECT
+[]                                                        (iter obj containing match obj). Each match obj only holds one substring for
+[]                                                        each subgroup () of the whole pattern.
+[]                                                        NOTE: [num_of_match_obj = num_of_repetition_of_pattern]
+[]                                                        []  st = 'shit1 shit2 shit3 shit4 shit5'
+[]                                                        []  itr = re.finditer('(s)[a-z]*([0-9])', st, re.IGNORECASE)
+[]                                                        []  for i in itr:
+[]                                                        []      print(i.group(1,2))
+[]                                                        []  >>> ('s', '1')
+[]                                                        []      ('s', '2')
+[]                                                        []      ('s', '3')
+[]                                                        []      ('s', '4')
+[]                                                        []      ('s', '5')
+
+
+
+====== MATCH OBJECT (.match() .search()) ======
+A Match Object is an object containing information about the search and the result. If there is more than one match,
+only the FIRST occurrence of the match will be returned. If there is no match, the value None will be returned.
+
+[]    import re
+[]    print(re.search("ai", "The rain in Spain")) #this will print an object
+[]    >>> <_sre.SRE_Match object; span=(5, 7), match='ai'>
+
+The Match object has properties and methods used to retrieve information about the search, and the result:
+
+    mo.span()   returns a tuple containing the start-, and end index positions of the match. (5,8): match does not include pos 8.
+    mo.string   returns the original, same string passed into the function
+    mo.group(g) returns the FIRST part of the string where there was an ALL-match
+    mo[g]       similar to group(g), in turn calls mo.__getitem__[g]. NOTE: only mo[single_int] is allowed.
+    mo.groups() similar to group(g), just that groups() does not allow the choosing of subgroups / extraction points (g).
+                However, if some subgroups found none, it allows the alter of the return value, param: default=None
+
+
+1.  mo.span()
+    []    import re
+    []    x = re.search('ain', 'The rain in Spain')
+    []    print(x.span())
+    []    >>> (5,8)     #match does not include pos 8.
+
+2.  mo.string
+    []    import re
+    []    print(re.search('ain', 'The rain in Spain').string)
+    []    >>> The rain in Spain
+
+3.  mo.group(g)
+   * =1 Extraction
+    []    import re
+    []    st = 'shit1 shit2 shit3 shit4'
+    []    print(re.search('[a-z0-9]*s[a-z0-9]*',st).group())
+    []    >>> shit1                #only returns FIRST match's part
+    []
+   * >1 Extraction
+    []    m = re.match(r"(\w+) (\w+)", "Isaac Newton, physicist")
+    []    m.group(0) ~= m[0]       # The entire match
+    []    >>> 'Isaac Newton'
+    []    m.group(1) ~= m[1]       # The first parenthesized subgroup.
+    []    >>> 'Isaac'
+    []    m.group(2) ~= m[2]       # The second parenthesized subgroup.
+    []    >>> 'Newton'
+    []    m.group(1, 2)            # Multiple arguments give us a TUPLE().
+    []    >>> ('Isaac', 'Newton')
+
+4.  mo.groups(default=None)
+    []    m = re.match(r"(\d+)\.?(\d+)?", "24")  # matches 'num.something'
+    []    m.groups()                             # Second group defaults to None.
+    []    >>> ('24', None)
+    []    m.groups('0')                          # Now, the second group defaults to '0'.
+    []    >>> ('24', '0')
+
+
+
+====== FLAGS (re.finditer('patt', 'str', re.IGNORECASE)) ======
+re.A
+re.ASCII            Make \w, \W, \b, \B, \d, \D, \s and \S perform ASCII-only matching instead of full Unicode matching. This is only
+                    meaningful for Unicode patterns, and is ignored for byte patterns.
+
+re.DEBUG            Display debug information about compiled expression.
+
+re.I
+re.IGNORECASE       Perform case-insensitive matching; expressions like [A-Z] will also match lowercase letters.
+                    Full Unicode matching (such as Ü matching ü) also works unless the re.ASCII flag is used to disable non-ASCII matches.
+                    The current locale does not change the effect of this flag unless the re.LOCALE flag is also used.
+                    NOTE that when the Unicode patterns [a-z] or [A-Z] are used in combination with the IGNORECASE flag, they will match
+                    the 52 ASCII letters and 4 additional non-ASCII letters: ‘İ’ (U+0130, Latin capital letter I with dot above),
+                    ‘ı’ (U+0131, Latin small letter dotless i), ‘ſ’ (U+017F, Latin small letter long s) and ‘K’ (U+212A, Kelvin sign).
+                    * If the ASCII flag is used, only letters ‘a’ to ‘z’ and ‘A’ to ‘Z’ are matched.
+
+re.L
+re.LOCALE           Make \w, \W, \b, \B and case-insensitive matching dependent on the current locale. This flag can be used only with bytes
+                    patterns. The use of this flag is discouraged as the locale mechanism is very unreliable, it only handles one “culture” at
+                    a time, and it only works with 8-bit locales. Unicode matching is already enabled by default in Python 3 for Unicode (str)
+                    patterns, and it is able to handle different locales/languages.
+
+re.M
+re.MULTILINE        When specified, the pattern character '^' matches at the beginning of the string and at the beginning of each line
+                    (immediately following each newline); and the pattern character '$' matches at the end of the string and at the end
+                    of each line (immediately preceding each newline). By default, '^' matches only at the beginning of the string, and
+                    '$' only at the end of the string and immediately before the newline (if any) at the end of the string.
+
+re.S
+re.DOTALL           Make the '.' special character match any character at all, including a newline; without this flag, '.' will match anything
+                    except a newline.
+
+re.X
+re.VERBOSE          This flag allows you to write regular expressions that look nicer and are more readable by allowing you to visually separate
+                    logical sections of the pattern and add #comments. Whitespace within the pattern is IGNORED, EXCEPT when in a character class
+                    [a-z0-9], or when preceded by an unescaped backslash '\ ', or within tokens like *?, (?: or (?P<...>.
+                    When a line contains a # that is not in a character class and is not preceded by an unescaped backslash, all characters from
+                    the leftmost such # through the end of the line are ignored.
+
+                    This means that the two following regular expression objects that match a decimal number are functionally equal:
+                    []    a = re.compile(r"""\d +  # the integral part
+                    []                       \.    # the decimal point
+                    []                       \d *  # some fractional digits""", re.X)
+                    []    b = re.compile(r"\d+\.\d*")
+
+
+-----------------------------------------------------------------------------------------------------
+// ~!ESCAPE CHARACTERS (NOTE: only has special meaning in Regular / F-string, NOT R-string)
+
+\n         Newline.
+\\         Backslash.
+\'         Single Quote
+\"         Double Quote
+\t         Horizontal tab.
+\v         Vertical tab.
+\f         Formfeed. (i.e. print("hello\fworld")
+                      >>> hello
+                      ...      world
+\r         Carriage return, moves all characters after the beginning of the line while overriding same
+	       number of characters moved.
+	   	             (i.e. print("123456\rXX_XX")
+                      >>>XX_XX6
+                      #first prints 123456, then like a typewritter, cursor shifts to left and overrides
+                       characters typed by replacing them with new character, in this case, 12345 -> XX_XX
+
+\a         ASCII bell makes ringing the bell alert sounds. (i.e. print("\a") --> "tingtongteng" sound)
+\b         ASCII backspace removes previous character. (i.e. print("ab" + "\b" + "c") --> ac)
+\N{name}   Prints a character from the Unicode database. (i.e. print(u"\N{DAGGER}") --> †)
+\uxxxx     Prints 16-bit hex value Unicode character. (i.e. print(u"\u041b") --> Л)
+\Uxxxxxxxx Prints 32-bit hex value Unicode charater. (i.e. print(u"\U000001a9") --> Ʃ)
+\ooo       Prints character based on its octal value. (i.e. print("\043") --> #)
+\xhh       Prints character based on its hex value. (i.e. print("\x23") --> #)
+
+-----------------------------------------------------------------------------------------------------
+>>> These sequences can be included inside a character class. For example, [\s,.] is a character class
+    that will match any whitespace character, or ',' or '.'.
+
+    The final metacharacter in this section is .. It matches anything except a newline character, and
+    there’s an alternate mode (re.DOTALL) where it will match even a newline. . is often used where you
+    want to match “any character”
+
+
+============================================================================================================================================ ~!STRINGS
+
+Strings are arrays.
+x = "abcdefg"
+Ind  0123456 ->
+    -7654321 <-
+
+x[0] = a
+x[-1] = g
+len(x) = 7
+print("abc" in x)   >>> True
+
+
+---------------------------------------------------------SLICING // ~!slice
+print(x[2:5])       >>> cde   #5 not included         #see indextrick with ~!
+print(x[2:])        >>> cdefg
+print(x[:5])        >>> abcde
+print(x[-5:-2])     >>> cde   ~!accesslogic: all from left to right, not inc last stated item.
+
+print(x.upper())    >>> ABCDEFG
+print(x.lower())    >>> abcdefg     *only str.lower/upper when used as key for list.sort/sorted, no args
+
+a = "  this is a trick "
+print(a.strip())              >>> "this is a trick"             #lstrip() / rstrip()
+print(a.replace('t', 'j'))    >>> "  jhis is a jrick "          #case sensitive: UPPER != lower
+print(a.split("s"))           >>> ["  thi", " i", " a trick"]   #if separator char not specified, defaults to blank space
+print(a.startswith(" "))      >>> True                          #endswith()
+print(a.find(" is "))         >>> 6                             #returns index position of head char, -1 if not found
+
+
+---------------------------------------------------------FORMATTING // ~!format
+quantity = 3
+itemno = 567
+price = 49.95
+myorder = "I want {} pieces of item {} for {} dollars."    #{} = placeholder according to position
+print(myorder.format(quantity, itemno, price))
+
+>>> I want 3 pieces of item 567 for 49.95 dollars.
+
+quantity = 3
+itemno = 567
+price = 49.95
+myorder = "I want to pay {2} dollars for {0} pieces of item {1}."    #{args_index} = placeholder for args
+print(myorder.format(quantity, itemno, price))
+
+>>> I want to pay 49.95 dollars for 3 pieces of item 567.
+For more string formatting types:
+https://www.w3schools.com/python/ref_string_format.asp
+https://docs.python.org/3/library/string.html
+
+---------------------------------------------------------F-STRING // ~!fstring
+f"string{placeholder}"
+F"string{placeholder}"
+
+[]    name = 'John Doe'
+[]    age = 18
+[]    print(f"His name is {name} and he is {age} years old.")
+
+{placeholder} : - expression {5*5}
+                - {string_name.title()} "datacamp is an educational company." >>> "Datacamp Is An Educational Company.""
+                - function that returns value {func(6)}
+                - dictionary, lists, blablbla {dict['key']}
+                - OOP __init__ __str__ {self.name}
+                Escape Characters:
+                    \char only allowed outside {}
+                    {} will exactly print anything in it.
+                    To print '{}' in f-string, use {{}}, not \{.
+
+
+---------------------------------------------------------R-STRING // ~!rstring
+Python raw string is created by prefixing a string literal with 'r' or 'R'.
+Python raw string treats backslash (\) as a literal character. This is useful
+when we want to have a string that contains backslash and don't want it to
+be treated as an escape character.
+
+[]  print(r"this \a")
+[]  >>> this \a         #not escaped bell
+                        #Related to REGEX
+
+---------------------------------------------------------STRING REVERSING // ~!stringreverse
+txt = "Hello World"[::-1]      #syntax: [begin:end:step]        #see indextrick with ~!
+>>> dlroW olleH
+#A slice that steps backwards: Create a slice that starts at the end of the string, and moves backwards.
+This is extended slice syntax. It works by doing [begin:end:step] - by leaving begin and end off and
+specifying a step of -1, it reverses a string.
+In this particular example, the slice statement [::-1] means start at the end of the string and end at
+position 0, move with the step -1, negative one, which means one step backwards.
+spec web: https://stackoverflow.com/questions/931092/reverse-a-string-in-python
+
+more at https://www.w3schools.com/python/python_ref_string.asp
+
+
+============================================================================================================================================ ~!BOOLEAN
+
+Almost any value is evaluated to True if it has some sort of content.
+Any string is True, except empty strings.
+Any number is True, except 0.
+Any list, tuple, set, and dictionary are True, except empty ones.
+
+bool("abc") >>> True
+x=2, print(bool(x))  >>> True
+
+In fact, there are not many values that evaluate to False, except empty values, such as (), [], {}, "",
+the number 0, and the value None. And of course the value False evaluates to False.
+Python also has many built-in functions that return a boolean value, like the isinstance() function,
+which can be used to determine if an object is of a certain data type:
+
+x = 200
+print(isinstance(x, int))
+>>> True
+
+
+============================================================================================================================================ ~!LIST
+List is a collection which is ordered and changeable. Allows duplicate members. Can contain different data types within one list.
+listz = ['str', int(5), (tuple), {'dict':'a'} ... etc ]
+Tuple is a collection which is ordered and unchangeable. Allows duplicate members.
+Set is a collection which is unordered and unindexed. No duplicate members.
+Dictionary is a collection which is ordered* and changeable. No duplicate members.
+
+
+new_list = list(something_else)
+new_list = []
+this_list = ['one', 'two', 'three']
+      IND :    0      1       2
+              -3     -2      -1
+
+~!getindex()
+list.index() : Returns the index of the first element with the specified value
+print(this_list.index('two')) >>> 1 ---------------------RETURN ITEM INDEX
+~!.index
+
+---------------------------------------------------------COUNT ITEM ~!count
+The count() method returns count of how many times obj occurs in list.
+liszt = [1,2,3,3,4]
+print(liszt.count(4)) >>> 2
+
+
+---------------------------------------------------------ACCESS LIST
+print(this_list[0])     >>> one
+print(this_list[0:2])   >>> ['one', 'two']
+print(this_list[-3:-1]) >>> ['one', 'two']         ~!accesslogic: all from left to right, not inc last stated item.
+print(len(this_list))   >>> 3
+
+~!inlist
+if 'one' in this_list:                  *must b specific about item name.
+    ...
+
+
+---------------------------------------------------------LOOP LIST
+for i in range(len(thislist)):
+    ...
+
+i=0
+while i < len(thislist):
+    ...
+    i+=1
+
+[print(x) for x in thislist]        #must have []
+
+
+---------------------------------------------------------EDIT LIST
+~!changelistitem
+changing list item
+this_list[0] = 'ZERO'   >>> ['ZERO', 'two', 'three']
+
+#If you insert more items than you replace, the new items will be inserted where you specified,
+and the remaining items will move accordingly:
+    thislist = ["apple", "banana", "cherry", "orange", "kiwi", "mango"]
+    thislist[1:3] = ["blackcurrant", "watermelon"]
+    >>> ['apple', 'blackcurrant', 'watermelon', 'orange', 'kiwi', 'mango']
+
+#If you insert less items than you replace, the new items will be inserted where you specified,
+and the remaining items will move accordingly:
+    thislist = ["apple", "banana", "cherry"]
+    thislist[1:3] = ["watermelon"]
+    >>> ['apple', 'watermelon']
+
+
+~!inserttolist #inserts to spec ind position
+thislist.insert(2, "watermelon")
+                ^ind  ^item_to_add
+>>> ['apple', 'banana', 'watermelon', 'cherry']
+
+
+~!appendtolist #adds to end of list
+thislist.append("orange")
+>>> ['apple', 'banana', 'cherry', 'orange']
+
+
+~!extendlist #adds another list to and of ori list
+thislist = ["apple", "banana", "cherry"]
+tropical = ["mango", "pineapple", "papaya"]
+thislist.extend(tropical)
+>>> ['apple', 'banana', 'cherry', 'mango', 'pineapple', 'papaya']
+^
+.extend() accepts any ITERABLE as parameter: strings'', list[], dict{}, tuple()
+    STRING
+    thislist.extend('loop')
+    >>> ["apple", "banana", "cherry", "l", "o", "o", "p"]
+        *treats str as iterable: for i in 'loop'
+
+    DICTIONARY
+    dict1 = {'a':1, 'b':2, 'c':3}
+    thislist.extend(dict1)
+    >>> ["apple", "banana", "cherry", "a", "b", "c"]
+        *only adds key, not value of dict
+
+    TUPLE
+    tup = ((1,2,3), (4,5,6))
+    thislist.extend(tup)
+    >>> ["apple", "banana", "cherry", (1,2,3), (4,5,6)]
+        *adds the 'big' items, does not care if its nested
+         same applies to nested lists.
+
+
+
+
+~!removefromlist
+thislist = ["apple", "banana", "cherry"]
+thislist.remove('banana')
+>>> ['apple', 'cherry']
+
+
+~!popfromlist
+thislist.pop() : removes last item of list by default, if index specified, removes item at index.
+
+
+~!delfromlist
+del thislist      : deletes whole list by default, printing list after this throws an error because list is unavailable.
+                    In short, list does not remain after del.
+del thislist[ind] : deletes item at spec index position in list.
+
+
+~!clearlist
+thislist.clear()  : () takes no args, clears content in list, empty list remains.
+
+
+
+---------------------------------------------------------LIST COMPREHENSION
+// ~!listcomprehension offers a shorter syntax when you want to create a new list based on the values of an existing list.
+    *Old list is unchanged.
+
+
+    newlist = [expression for item in iterable if condition == True]      [(v,k) for (k,v) in c.items if True...]
+               ^^^^^^^^^^     %%%%    ********    =================
+
+
+Expression: expression of what to do with item, which you can manipulate before it ends up like a list item in the new list.
+            The expression can also contain conditions, not like a filter, but as a way to manipulate the outcome.
+            [x.upper() for x in fruits]
+             ^^^^^^^^^
+            ['hello' for x in fruits] : changes all to 'hello'
+             ^^^^^^^
+            [x if x != "banana" else "orange" for x in fruits] : Return the item if it is not banana, if it is banana return orange.
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+               ==============================
+
+Iterable  : can be any iterable object, like a list, tuple, set, or even FUNCTIONS.
+            [x for x in range(10)]
+                        *********
+            [x for x in range(10) if x < 5] >>> creates [0,1,2,3,4]
+                        *********    =====
+
+Condition : like a filter, only accepts the items that valuate to True.
+            [x for x in fruits if x != "apple"] : omits 'apple'
+                                  ============
+            [x for x in fruits] : without condition
+                                  =================
+
+
+Example------------------------------------------------------------------------
+Based on a list of fruits, you want a new list, containing only the fruits with
+the letter "a" in the name.
+
+fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+
+newlist = []
+for x in fruits:
+  if "a" in x:
+    newlist.append(x)
+=========================================
+newlist = [x for x in fruits if "a" in x]
+
+print(newlist)
+>>> ['apple', 'banana', 'mango']
+
+
+Below creates a list containing c's every set of tuples generated by the .items()
+function in the inversed form which is (value,key) instead of (key,value), sorts
+them reversely based on value, and prints it out.
+c = {'a':1, 'b':4, 'c':67}
+print(sorted([(v,k) for (k,v) in c.items()], reverse=True))
+>>> [(67,'c'), (4,'b'), (1,'a')]
+
+
+---------------------------------------------------------SORTING ~!sort
+oldlist.sort(key=func, reverse=True/False)
+newlist = sorted(oldlist, key=func, reverse=True/False)
+
+alphabetical: CAPITAL before lower case. For case insensitive sorting, use key=str.lower, YES, no () called key func.  ---|
+numerical   : as usual                                                                                                    | no () for key func.
+key         : def/lambda func that serves as a standard for sorting, based on returned value. *func called without (). ---|
+*cannot sort lists containing both alpha and num.
+
+
+Reverse List Order, regardless of alphanumerical position.
+list.reverse()
+*works with lists containing both alpha and num.
+
+
+Example:
+    SORTING WITH MULTIPLE KEYS (sorted())
+
+    #(name, marks out of 100, age)
+    >>> participants_list = [
+    ...     ('Ali', 50, 18),
+    ...     ('Terence', 75, 12),
+    ...     ('David', 75, 20),
+    ...     ('Jimmy', 90, 22),
+    ...     ('John', 45, 12)
+    ... ]
+
+    >>> def sorter(item):
+    ...     #since highest marks first, least error = most marks
+    ...     error = 100 - item[1]
+    ...     age = item[2]
+    ...     return (error, age)      <- highest marks first-least error; if same marks then younger age first.
+    				    ### (tuple comparison logic: element by element)
+    				    ### compare: (error, age)
+
+    >>> sorted_list = sorted(participants_list, key=sorter)   <- sorter deals with the items in the collection,
+    							     namely tuples in the list
+    >>> print(sorted_list)
+    [('Jimmy', 90, 22), ('Terence', 75, 12), ('David', 75, 20), ('Ali', 50, 18), ('John', 45, 12)]
+
+    ----------------OR----------------
+
+    >>> sorted_list = sorted(participants_list, key=lambda item: (100-item[1], item[2]))
+
+
+
+---------------------------------------------------------COPY ~!copy
+You cannot copy a list simply by typing list2 = list1, because: list2 will only be a reference to list1,
+and changes made in list1 will automatically also be made in list2.
+
+newlist = oldlist.copy()
+  or
+newlist = list(oldlist)
+
+
+
+---------------------------------------------------------JOIN ~!combine ~!join
+list3 = list1 + list2
+  or
+for i in list1:
+  list2.append(i)
+
+  or
+list1.extend(list2), adds items in 2 to 1
+
+
+
+============================================================================================================================================ ~!TUPLE
+A tuple is a collection which is ordered and unchangeable, in other words, immutable.
+It allows duplicate values and is indexed, just like lists.
+
+Creating tuples:
+newtup = tuple(("apple", 2, 5, True, "fruits"))        *can contain multiple data types
+singletup = ("apple",)                                 *tuple with single item must have comma, else python will not recognise it.
+                    ^
+
+---------------------------------------------------------SOME METHODS
+Just like lists:
+tup.count(item)
+tup.index(item)
+
+---------------------------------------------------------ACCESS
+tup = ("one", "two", "three", "four")
+print(tup[1:3])   >>> ("two", "three")
+
+if "a" in tup:
+    print(True)
+elif "one" in tup:
+    print("One1")
+>>> One1             *must be specific about item name, same as lists.
+
+
+---------------------------------------------------------EDIT
+Once a tuple is created, you cannot change its values. Tuples are unchangeable,
+or immutable as it also is called.
+But there is a workaround. You can convert the tuple into a list, change the list,
+and convert the list back into a tuple.
+
+Convert the tuple into a list to be able to change it:
+x = ("apple", "banana", "cherry")
+y = list(x)
+y[1] = "kiwi"            *list.append() .remove() ...etc are all applicable.
+x = tuple(y)
+>>> ("apple", "kiwi", "cherry")
+
+
+However, you can add a tuple to another tuple:
+newtup += oldtup
+
+
+You can also multiply the content of a tuple for a given time.
+fruits = ("apple", "banana", "cherry")
+mytuple = fruits * 2
+>>> ('apple', 'banana', 'cherry', 'apple', 'banana', 'cherry')
+
+
+Or you can delete the tuple completely:
+thistuple = ("apple", "banana", "cherry")
+del thistuple
+print(thistuple)          *this will raise an error because the tuple no longer exists
+                          *also note that tup.clear() doesn't exist, can convert to list before
+                           carrying out list.clear().
+
+
+---------------------------------------------------------UNPACKING
+When we create a tuple, we normally assign values to it. This is called "packing" a tuple.
+But, in Python, we are also allowed to extract the values back into variables. This is called "unpacking":
+
+fruits = ("apple", "banana", "cherry")
+(green, yellow, red) = fruits             *must be in this form
+print(green)
+print(yellow)
+print(red)
+>>> apple
+    banana
+    cherry
+
+Note: The number of variables must match the number of values in the tuple, if not, you must use an
+asterisk (*) to collect the remaining values as a LIST.
+
+fruits = ("apple", "mango", "papaya", "pineapple", "cherry")
+(green, *tropic, red) = fruits
+print(green)
+print(tropic)
+print(red)
+>>> apple
+    ['mango', 'papaya', 'pineapple']
+    cherry
+
+
+---------------------------------------------------------LOOP
+for x in thistuple:
+    print(x)
+
+for i in range(len(thistuple)):
+    print(thistuple[i])
+
+i = 0
+while i < len(thistuple):
+    print(thistuple[i])
+    i = i + 1
+
+
+
+============================================================================================================================================ ~!SET
+A set is a collection which is both unordered and unindexed, so you cannot be sure in which order the items will appear.
+They are also unordered, unchangeable (but can add items), and do not allow duplicate values.
+
+thisset = {"apple", 34, True, "apple"}
+  or
+thisset = set(("apple", 34, True, "apple"))
+
+print(thisset)      >>> {True, 34, 'apple'}       *order is changed every time you print
+print(len(thisset)) >>> 3                                   *does not allow duplicate values
+
+
+
+--------------------------------------------------------METHODS
+add()	                        Adds an element to the set
+union()	                        Return a NEW set containing the union of sets
+update()	                    UPDATE the set with the union of this set and others
+
+del set_name                    Deletes set, print(set_name) raises ERROR.
+clear()	                        Removes all the elements from the set, returns EMPTY set >>> set()
+pop()	                        Removes last (random) element from the set
+discard()	                    Remove the specified item, DOES NOT raise error if item does not exist.
+remove()	                    Removes the specified element, RAISES error if item does not exist.
+
+copy()	                        Returns a copy of the set
+
+difference()	                Returns a NEW set containing the difference between two or more sets
+difference_update()	            Removes the items in this set that are also included in another, specified set
+
+intersection()	                Returns a NEW set, that is the intersection of two other sets
+intersection_update()	        Removes the items in this set that are not present in other, specified set(s)
+
+isdisjoint()	                Returns whether two sets have a intersection or not    (T/F)
+issubset()	                    Returns whether another set contains this set or not   (T/F)
+issuperset()	                Returns whether this set contains another set or not   (T/F)
+
+
+symmetric_difference()	        Returns a set with the symmetric differences of two sets
+symmetric_difference_update()	Inserts the symmetric differences from this set and another
+
+
+
+---------------------------------------------------------ACCESS
+Set item access is random and unordered.
+No indexing is allowed, just 'for' to loop,
+or 'in' to detect item presence.
+
+for x in thisset:
+  print(x)
+
+print("banana" in thisset) >>> T/F
+
+
+---------------------------------------------------------ADD
+Items are unchangable, but you can add singly, or from other iterables.
+
+Singly:
+thisset = {"apple", "banana", "cherry"}
+thisset.add("orange")
+
+Iterables:
+thisset = {"apple", "banana", "cherry"}
+tropical = {"pineapple", "mango", "papaya"}
+mylist = ["kiwi", "orange"]
+
+thisset.update(tropical   >>> {'apple', 'mango', 'cherry', 'pineapple', 'banana', 'papaya'}
+thisset.update(mylist)    >>> {'banana', 'cherry', 'apple', 'orange', 'kiwi'}
+
+*for dict: only adds key, not value.
+*for tup: adds all first layer items. ((1,2), (3,4)) >>> adds (1,2) & (3,4)
+
+
+---------------------------------------------------------REMOVE
+thisset = {"apple", "banana", "cherry"}
+
+thisset.remove("banana")       *if item does not exists, throws error.
+thisset.discard("banana")      *DOES NOT throw error if item does not exists.
+
+
+You can also use the pop() method to remove an item, but this method will remove the last item.
+Remember that sets are unordered, so you will not know what item that gets removed.
+The return value of the pop() method is the removed item
+
+x = thisset.pop()
+print(x)         >>> cherry
+print(thisset)   >>> {'banana', 'apple'}
+
+thisset.clear()               >>> set()      *empties set, does not del it.
+del thisset, print(thisset)   >>> *ERROR_RAISED
+
+
+---------------------------------------------------------LOOP
+for x in thisset:
+  print(x)
+
+
+--------------------------------------------------------JOIN
+There are several ways to join two or more sets in Python.
+You can use the union() method that returns a new set containing all items from both sets,
+or the update() method that inserts all the items from one set into another:
+  *Both union() and update() WILL EXCLUDE DUPLICATE ITEMS.
+
+set1 = {"a", "b" , "c"}
+set2 = {1, 2, 3}
+
+set3 = set1.union(set2)     >>> {2, 1, 'a', 'c', 3, 'b'}
+set1.update(set2)           >>> {2, 3, 'b', 'c', 'a', 1}
+
+
+----------Keep ONLY the Duplicates
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "apple"}
+
+x.intersection_update(y), print(x)   >>> {'apple'}     *CHANGES set.
+z = x.intersection(y),    print(z)   >>> {'apple'}     *Returns NEW set.
+
+
+----------Keep All, But NOT the Duplicates
+x.symmetric_difference_update(y), print(x)  >>> {'google', 'banana', 'microsoft', 'cherry'}    *CHANGES set.
+z = x.symmetric_difference(y),    print(z)  >>> {'google', 'banana', 'microsoft', 'cherry'}    *Returns NEW set.
+
+
+
+
+============================================================================================================================================ ~!DICTIONARY
+A dictionary is a collection which is ordered*, changeable and does not allow duplicates.
+
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964,
+  "year": 2020       <-- Update value for key "year"
+}
+print(thisdict)
+>>> {'brand': 'Ford', 'model': 'Mustang', 'year': 2020}
+print(len(thisdict)) >>> 3
+
+
+The values in dictionary items can be of any data type:
+thisdict = {
+  "brand": "Ford",
+  "electric": False,
+  "year": 1964,
+  "colors": ["red", "white", "blue"]
+}
+
+
+---------------------------------------------------------METHODS
+clear()	        Removes all the elements from the dictionary
+copy()	        Returns a copy of the dictionary
+fromkeys()	    Returns a dictionary with the specified keys and value
+get()	        Returns the value of the specified key
+items()	        Returns a list containing a tuple for each key value pair
+keys()	        Returns a list containing the dictionary's keys
+pop()	        Removes the element with the specified key
+popitem()	    Removes the last inserted key-value pair
+setdefault()	Returns the value of the specified key. If the key does not exist: insert the key, with the specified value
+update()	    Updates the dictionary with the specified key-value pairs
+values()	    Returns a list of all the values in the dictionary
+
+
+---------------------------------------------------------ACCESS
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+x = thisdict["model"]      >>> Mustang
+x = thisdict.get("model")  >>> Mustang
+
+
+dictionary.get(keyname, value)
+
+    keyname	 :  Required. The keyname of the item you want to return the value from
+    value	 :  Optional. A value to return if the specified key does not exist. Defaults to None.
+
+    count[item] = count.get(item, 0) + 1
+    *This line says to get the value of item in count dict. If none, then return 0.
+     It then +1 to 0 =1 and creates a new pair of key and value in count dict {'item':1}.
+
+
+x = dictionary.keys()
+    return a list of all the keys in the dictionary.
+
+x = dictionary.values()
+    return a list of all the values in the dictionary.
+
+x = dictionary.items()
+    returns a list of tuples containing key,value.
+    [(key, value)]
+    Chuck's famous x=sorted([(k,v) for (v,k) in c.items()], reverse=True)
+
+Check if key is present in dict.
+if 'key' in dict:
+    ....
+
+
+---------------------------------------------------------EDIT
+thisdict['old/new_key'] = new_value
+thisdict.update({"old/new_key": new_value, ...})    *args must be dict/iterable with key:value pairs
+
+dict_name = dict.fromkeys(keys, value)       *notice that 'dict.' is fixed.
+    keys    : Required. An iterable specifying the keys of the new dictionary
+    value	: Optional. The value for all keys. Default value is None
+
+    x = ('key1', 'key2', 'key3')
+    y = 0
+    thisdict = dict.fromkeys(x, y)
+    print(thisdict)
+    >>> {'key1': 0, 'key2': 0, 'key3': 0}
+
+dict_name.setdefault(key, value)
+    Returns the value of key. If the key does not exist, inserts new key:value.
+    key  	: Required. The keyname of the item you want to return the value from
+    value	: Optional.
+              If the key exist, this parameter has no effect.
+              If the key does not exist, this value becomes the key's value
+              Defaults to None
+    *Equivalent to: thisdict[newkey] = thisdict.get(newkey, newvalue)
+     Just that .get() does not automatically insert the new key:value.
+
+del thisdict[key]   : removes key:value.
+del thisdict        : deletes whole dict.
+thisdict.clear()    : empties dict.
+thisdict.pop(key)   : removes key:value from dict, returns value to .pop()
+thisdict.popitem()  : removes last pair of key:value in dict, returns TUPLE of (key, value) to .popitem()
+                      *BOTH can be used: x = thisdict.pop()/.popitem()
+
+
+---------------------------------------------------------LOOP
+for i in dict:
+    print(i)            *prints key
+    print(dict[i])      *prints value
+
+for i in dict.keys()/.values():
+    print(i)
+
+for (k,v) in dict.items:
+    print(v,k)          *can alter the printing sequence
+
+
+---------------------------------------------------------COPY
+You cannot copy a dictionary simply by typing dict2 = dict1, because: dict2 will only be
+a reference to dict1, and changes made in dict1 will automatically also be made in dict2
+
+newdict = olddict.copy()
+newdict =dict(olddict)
+
+
+---------------------------------------------------------ACCESS TO NESTED DICT
+child1 = {
+  "name" : "Emil",
+  "year" : 2004
+}
+child2 = {
+  "name" : "Tobias",
+  "year" : 2007
+}
+child3 = {
+  "name" : "Linus",
+  "year" : 2011
+}
+
+myfamily = {
+  "child1" : child1,
+  "child2" : child2,
+  "child3" : child3
+}
+
+emil = myfamily['child1']['name']
+print(emil)  >>> Emil
+
+
+
+============================================================================================================================================ ~!SCOPE
+~!local scope: a variable only accessible inside a function, or in the other function located within the function.
+~!global scope: variable accessible to all.
+
+    global x
+    x = 'value'
+
+local:
+[]    x = 300
+[]    def outer_func():
+[]        x = 200
+[]        def inner_func():
+[]            print(x)
+[]        inner_func()          <-- x=200
+
+
+global:
+[]    x = 300
+[]    def outer_func():
+[]        global x              <-- becomes the glabal var x
+[]        x = 200               <-- resets global var x value (optional)
+[]    print(x)   >>> 300
+[]    outer_func()              <-- if in func(), only resets when function is called
+[]    print(x)   >>> 200
+
+
+============================================================================================================================================ ~!MODULES
+Consider a module to be the same as a code library. A file containing a set of functions you want to include
+in your application. To create a module just save the code you want in a file with the file extension module_name.py
+
+*Note that the module file must be located in the same directory as the code file.
+ Make sure that your module file only defines functions, does not call them at the outermost layer,
+ else importing them will automatically run those called functions.
+
+[]    import bestfitline3 as bfl
+[]    bfl.best_fit_line()
+
+If your module contains pre-defined data, to access it, refer below:
+
+[]    #say in your module you have pre-defined dict: dic={'key1':'value1'}
+[]    import module as mod
+[]    print(mod.dic['key1'])
+[]    >>> value1
+
+You can opt to only import certain data from the module, not the functions.
+
+[]    from module import dic
+[]    print(dic['key1'])
+[]    >>> value1
+
+There is a built-in function to list all the function names (or variable names) in a module. The dir() function:
+[]    import platform
+[]    x = dir(platform)
+[]    print(x)
+
+
+============================================================================================================================================ ~!MATH
+min(iterable)
+max(iterable)
+abs(-num)
+pow(x,y) :: x**y
+
+
+[]  import math
+...
+math.function()
+math.constant
+
+math.degrees()   rad -> deg
+math.radians()   deg -> rad
+
+[]    import math
+[]    print(math.sin(math.radians(30)))   <-- sin cos tan take in radians
+[]    print(math.sin(math.radians(90)))
+[]    print(math.tan(math.radians(45)))
+
+see: https://www.w3schools.com/python/module_math.asp
+
+
+============================================================================================================================================ ~!DATE ~!TIME
+A date in Python is not a data type of its own, but we can import a module named datetime to work with dates as date objects.
+
+[]    import datetime as dt
+[]
+[]    x = dt.datetime.now()
+[]    print(x)
+[]    >>> 2021-09-01 18:47:25.052919
+[]        year-month-day hour:min:sec:microsec
+[]
+[]    print(x.year, x.month, x.day, x.hour, x.minute, x.second, x.microsecond)
+[]    >>> 2021 9 1 18 47 25 052919
+
+
+To create a date, we can use the datetime() class (constructor) of the datetime module.
+The datetime() class requires three minimum parameters to create a date: Year, Month, Day.
+
+[]    import datetime
+[]    x = datetime.datetime(year, month, day, hour, min, sec, microsec, timezone)
+[]            #Default        0      0    0     0    0    0         0      None
+[]            #Must-have      ^      ^    ^
+[]    print(x)
+
+
+To format date objects into readable strings, use the 'strftime("%format_code")' method. (str from time)
+
+[]    import datetime
+[]    x = datetime.datetime.now()
+[]    print(x.strftime("%B"))
+[]    >>> September
+
+
+Full "%format_code" list
+---------------------------------------------------------------------
+%a	Weekday, short version	                     Wed
+%A	Weekday, full version	                     Wednesday
+%w	Weekday as a number 0-6, 0 is Sunday	     3
+%d	Day of month 01-31	                         31
+%b	Month name, short version	                 Dec
+%B	Month name, full version	                 December
+%m	Month as a number 01-12	                     12
+%y	Year, short version, without century	     18
+%Y	Year, full version	                         2018
+%H	Hour 00-23	                                 17
+%I	Hour 00-12	                                 05
+%p	AM/PM	                                     PM
+%M	Minute 00-59	                             41
+%S	Second 00-59	                             08
+%f	Microsecond 000000-999999	                 548513
+%z	UTC offset	                                 +0100
+%Z	Timezone	                                 CST
+%j	Day number of year 001-366	                 365
+%U	Week number of year, Sunday as the first
+    day of week, 00-53	                         52
+%W	Week number of year, Monday as the first
+    day of week, 00-53	                         52
+%c	Local version of date and time	             Mon Dec 31 17:41:00 2018
+%C	Century	                                     20
+%x	Local version of date	                     12/31/18 (month/day/year)
+%X	Local version of time	                     17:41:00 (hr/min/sec)
+%%	A '%' character	                             %
+%G	ISO 8601 year	                             2018
+%u	ISO 8601 weekday (1-7)	                     1
+%V	ISO 8601 weeknumber (01-53)	                 01
+---------------------------------------------------------------------
+
+
+============================================================================================================================================ ~!JSON
+Official Documentation: https://docs.python.org/3/library/json.html
+JSON (JavaScript Object Notation) is a syntax for storing and exchanging data.
+Python objects are converted into the JSON (JavaScript) equivalent:
+
+    Python	     JSON
+    ======================
+    dict {}   -	 Object {}
+    list []   -	 Array []
+    tuple ()  -	 Array []
+    str ""    -	 String ""
+    int 4     -	 Number 4
+    float 4.0 -	 Number 4.0
+    True      -	 true
+    False     -	 false
+    None      -	 null
+    ======================
+    JSON --> PY : json.loads()      #load string into python, Decoding
+    PY --> JSON : json.dumps()      #dump string to json, Encoding
+   *JSON --> PY (read from file.json) : json.load(file_pointer)
+   *PY --> JSON (write to file.json)  : json.dump(file_pointer, pythondict)
+
+   #ref: json_dump()_dumps().jpg
+
+
+DECODING / DESERIALIZING: JSON string --> Python object using the json.loads() method.
+
+[]    import json
+[]    x =  '{ "name":"John", "age":30, "city":"New York"}'    # some JSON
+[]    y = json.loads(x)                                       # parse x
+[]    print(y["age"])                                         # the result is a Python dictionary
+[]    >>> 30
+
+ENCODING / SERIALIZING: Python object --> JSON string using the json.dumps() method.
+
+[]    import json
+[]    x = {                  # a Python object (dict):
+[]      "name": "John",
+[]      "age": 30,
+[]      "city": "New York"
+[]    }
+[]    y = json.dumps(x)      # convert into JSON:
+[]    print(y)               # the result is a JSON string:
+[]    >>> {"name": "John", "age": 30, "city": "New York"}
+
+ACCESSING DATA: Just as how you'd do with dicts & lists.
+
+[]    # can use this method to retrieve data from nested list or dicts
+[]    # ['texts'] are dict keys while [numbers] are list indexes
+[]    lat = js['results'][0]['geometry']['location']['lat']
+[]    lng = js['results'][0]['geometry']['location']['lng']
+
+An example of all legal data types:
+
+[]    import json
+[]    x = {
+[]      "name": "John",
+[]      "age": 30,
+[]      "married": True,
+[]      "divorced": False,
+[]      "children": ("Ann","Billy"),
+[]      "pets": None,
+[]      "cars": [
+[]        {"model": "BMW 230", "mpg": 27.5},
+[]        {"model": "Ford Edge", "mpg": 24.1}
+[]      ]
+[]    }
+[]    print(json.dumps(x))
+[]    >>> {"name": "John", "age": 30, "married": true, "divorced": false,
+[]         "children": ["Ann","Billy"], "pets": null, "cars": [{"model": "BMW 230",
+[]         "mpg": 27.5}, {"model": "Ford Edge", "mpg": 24.1}]}
+
+NOTE: Keys in key/value pairs of JSON are always of the type str. When a dictionary is converted into JSON,
+all the keys of the dictionary are coerced to strings. As a result of this, if a dictionary is converted
+into JSON and then back into a dictionary, the dictionary may not equal the original one.
+That is, loads(dumps(x)) != x, if x has non-string keys.
+
+
+================ Dump() vs DumpS() ================
+json.dump() : Serialize obj as a JSON formatted stream to fp (a .write()-supporting file-like object).
+json.dumps() : Serialize obj to a JSON formatted str.
+             Same syntax as below, just WITHOUT 'fp'.
+
+Default syntax:
+[]    json.dump(
+[]          obj,                     *Legal python data types/objects
+[]          fp,                      *Ref below : file pointer used to write JSON formatted data into file
+[]                                    []    fp = open("filename.json", "w")             #write_file, fp=file object
+[]                                    []    json.dump(developer_Dict, fp)
+[]          *,                       *Meant to define keyword specific args. See DEF FUNC().
+[]          skipkeys = False,        *If True, then dict keys that are not of a basic type, meaning custom object
+[]                                    types will be omitted instead of raising a TypeError
+[]          ensure_ascii = True,     *True: the output is guaranteed to have all incoming non-ASCII characters escaped: {"unicode black star": "\u2605"}
+[]                                    False: these characters will be output as-is/unescaped: {"unicode black star": "★"}
+[]          check_circular = True,   *False: the circular reference check for container types will be skipped and a circular reference will result
+[]                                    in an OverflowError (or worse).
+[]          allow_nan = True,        *True: JavaScript equivalents (NaN, Infinity, -Infinity) will be used.
+[]                                    False: it will be a ValueError to serialize out of range float values (nan, inf, -inf).
+[]          indent = None,           *By default, json string is a long line. If set, i.e. indent=4 (meaning newline + 4 spaces before text)
+[]                                    To only use newline, set to 0, -Int or "". 'indent' can be a string "anything".
+[]          separators = None,       *By default (', ', ': ')  To get the most compact JSON representation, you should use (',', ':')  to eliminate whitespace.
+[]                                                 ==    ==                                                                  =    =
+[]                                    Should return a tuple (item_separator, key_separator)
+[]          default = None,          *If specified, default should be a function that gets called for objects that can’t otherwise be serialized (custom_py_obj -> json).
+[]                                    It should return a JSON encodable version of the object or raise a TypeError.
+[]                                    If not specified, TypeError is raised.
+[]          cls = None,              ~!? Extending JSONEncoder: Customizable
+[]                                       From a few refs, I guess this is 'class'. cls=class_name. class_name can inherit other obj class' properties
+[]                                       and contain a few functions in it that will be ran.
+[]                                      *To use a custom JSONEncoder subclass (e.g. one that overrides the default() method to serialize additional types),
+[]                                       specify it with the cls kwarg; otherwise JSONEncoder is used.
+[]                                       ref: https://stackoverflow.com/questions/63393059/json-dump-not-calling-default-or-cls
+[]                                            https://docs.python.org/3/library/json.html
+[]          sort_keys = False,       *True: most outer layer of dicts will be sorted
+[]          **kw                     *Mostly for developers to modify this func themselves. See DEF FUNC().
+[]    )
+[]
+[]----------------------------------------------------------------
+[] *The json module always produces str objects, not bytes objects.
+[]  Therefore, fp.write() or other equivalent (as above must) support str input.
+
+
+
+================ Load() vs LoadS() ================
+json.load() : Deserialize fp (a .read()-supporting text file or binary file containing a JSON document) to a Python object.
+json.loads() : Deserialize fp (a .read()-supporting text file or binary file containing a JSON document) to a Python object.
+               Same syntax as below, just that fp is replaced with s (a str, bytes, bytearray instance containing a JSON document).
+
+Default syntax:
+[]    json.load(
+[]          fp,                          *file pointer/file object
+[]                                        [] fp = open("file_path",)            #read file
+[]                                        [] json.load(fp)
+[]          *,
+[]          cls = None,                  *To use a custom JSONDecoder subclass, specify it with the cls kwarg; otherwise JSONDecoder is used.
+[]                                        Additional keyword arguments will be passed to the constructor of the class.
+[]          object_hook = None,          *Optional function that will be called with the result of any object literal decoded (a dict).
+[]                                        The return value of object_hook will be used instead of the dict. This feature can be used to
+[]                                        implement custom decoders (e.g. JSON-RPC class hinting).
+[]          object_pairs_hook = None,    *Optional function that will be called with the result of any object literal decoded with an
+[]                                        ordered list of pairs. The return value of object_pairs_hook will be used instead of the dict.
+[]                                        This feature can be used to implement custom decoders. If object_hook is also defined, the
+[]                                        object_pairs_hook takes priority.
+[]          parse_float = None,          *If specified, will be called with the string of every JSON float to be decoded. By default,
+[]                                        this is equivalent to float(num_str). This can be used to use another datatype or parser for
+[]                                        JSON floats (e.g. decimal.Decimal).
+[]          parse_int = None,            *If specified, will be called with the string of every JSON int to be decoded. By default,
+[]                                        this is equivalent to int(num_str). This can be used to use another datatype or parser for
+[]                                        JSON integers (e.g. float).
+[]          parse_constant = None,       *If specified, will be called with one of the following strings: '-Infinity', 'Infinity', 'NaN'.
+[]                                        This can be used to raise an exception if invalid JSON numbers are encountered.
+[]          **kw
+[]    )
+
+
+
+============================================================================================================================================ ~!FILE HANDLING
+// ~!filehandle ~!openfile
+
+File Handling: Note that fh returns a file object.
+
+    fh = open('file_path', 'mode')
+
+There are four different methods (modes) for opening a file:
+
+[]    "r" - Read - Default value. Opens a file for reading only, error if the file does not exist
+[]    "a" - Append - Opens a file for appending only, creates the file if it does not exist
+[]    "w" - Write - Opens a file for writing only (overwrite), creates the file if it does not exist
+[]    "x" - Create - Creates the specified file, returns an error if the file exists
+
+In addition you can specify if the file should be handled as binary or text mode:
+
+[]    "t" - Text - Default value. Text mode
+[]    "b" - Binary - Binary mode (e.g. images)
+
+Combined Modes:
+NOTE: "+" usually is for both reading & writing/appending
+      "w" any mode including it will have an overwrite function
+
+[]    r     for reading – The file pointer is placed at the beginning of the file. This is the default mode.
+[]    r+    Opens a file for both reading and writing. The file pointer will be at the beginning of the file.
+[]    w     Opens a file for writing only. Overwrites the file if the file exists.
+[]            If the file does not exist, creates a new file for writing.
+[]    w+    Opens a file for both writing and reading. Overwrites the existing file if the file exists.
+[]            If the file does not exist, it creates a new file for reading and writing.
+[]    rb    Opens a file for reading only in binary format. The file pointer is placed at the beginning of the file.
+[]    rb+   Opens a file for both reading and writing in binary format.
+[]    wb+   Opens a file for both writing and reading in binary format. Overwrites the existing file if the file exists.
+[]            If the file does not exist, it creates a new file for reading and writing.
+[]    a     Opens a file for appending. The file pointer is at the end of the file if the file exists. That is, the file
+[]            is in the append mode. If the file does not exist, it creates a new file for writing.
+[]    ab    Opens a file for appending in binary format. The file pointer is at the end of the file if the file exists.
+[]            That is, the file is in the append mode. If the file does not exist, it creates a new file for writing.
+[]    a+    Opens a file for both appending and reading. The file pointer is at the end of the file if the file exists.
+[]            The file opens in the append mode. If the file does not exist, it creates a new file for reading and writing.
+[]    ab+   Opens a file for both appending and reading in binary format. The file pointer is at the end of the file if the
+[]            file exists. The file opens in the append mode. If the file does not exist, it creates a new file for reading and writing.
+[]    x     Open for exclusive creation, failing if the file already exists (Python 3)
+
+
+====== Methods of File Object ======
+fh              Sort of an iter, returns every line in file using for loop.
+                  []  for line in fh:
+                  []      print(line)
+fh.read(size)   Returns 'str: t mode'/'byte: b mode' version of file content.
+                  Size: num of characters. Reutrns all content if negative or omitted.
+                  *Ends return with empty str ''.
+fh.readline()   Reads a single line from the file; a newline character (\n) is left at the end of the string,
+                and is only omitted on the last line of the file if the file doesn’t end in a newline.
+                  Used like next() in iters.
+fh.write(str)   Writes/Adds str content to file in the specified mode.
+fh.close()      Closes file in specified mode.
+
+NOTE: Always close() a file before opening it in another diff mode.
+      In some cases, due to buffering, changes made to a file may not show until you close the file.
+
+
+====== Deleting Files ====== // ~!deletefile ~!delfile
+
+To delete a file, you must import the OS module, and run its os.remove() function:
+
+[]    import os
+[]    os.remove('file_path')
+
+To avoid getting an error (if file doesn't exist), use if:
+
+[]    import os
+[]    if os.path.exists("file_path"):
+[]      os.remove("file_path")
+[]    else:
+[]      print("The file does not exist")
+
+
+====== Deleting Folders ====== // ~!deletefolder ~!delfolder
+To delete an entire folder, use the os.rmdir() method:
+NOTE: You can only remove empty folders.
+
+[]    import os
+[]    os.rmdir("myfolder")
+
+
+
+
+============================================================================================================================================ ~!MATPLOTLIB
+// ~!mpl ~!plt
+Matplotlib is a low level graph plotting library in python that serves as a visualization utility.
+Most of the Matplotlib utilities lies under the pyplot submodule, and are usually imported under the plt alias:
+NOTE: must seperate different plt.plot(x,y) for np.array() pairs of different dimensions.
+
+
+    # Some basic code to get mpl functioning.
+[]
+[]    import matplotlib.pyplot as plt
+[]    import numpy as np
+[]
+[]    xpoints = np.array([0, 6])
+[]    ypoints = np.array([0, 250])
+[]
+[]    plt.plot(
+[]           xpoints_1,                 Defaults to drawing a line across all points. If xpoints not specified, defaults to int [0,1,2,3..]
+[]           ypoints_1,                     Points must be placed in pairs x,y.
+[]           xpoints_2,                     Default color of line #1=blue, #2=orange...
+[]           ypoints_2,
+[]
+[]           'o',                       ALL: Optional points param. Plots points used with lines.
+[]           marker = 'o/*/.'           ALL: Markers on lines. https://www.w3schools.com/python/matplotlib_markers.asp
+[]           'o:r'                      ALL: Formating: 'marker|line|color'      'o/*/. | -/:/--/-. | r/g/b/c/m/y/k/w'
+[]                                          HTML Color: https://www.w3schools.com/colors/colors_picker.asp?colorhex=FA8072
+[]           label='name_for_line'      ALL: A name that will be displayed in the legend for this line color.
+[]           markersize/ms = int        SEP: Marker size.
+[]           markeredgecolor/mec = 'r'  SEP: Marker edeg color
+[]           markerfacecolor/mfc = 'r'  SEP: Marker face color
+[]           linestyle/ls = 'dotted'    SEP: Line style. 'solid/-, dotted/:, dashed/--, dashdot/-., None/'' '
+[]           color/c = 'r'              SEP: Line color.
+[]           linewidth/lw = float       SEP: Line width.
+[]
+[]            )
+[]
+[]    font1 = {'family':'serif','color':'blue','size':20}       <--NOTE:Dict
+[]    font2 = {'family':'serif','color':'darkred','size':15}
+[]
+[]    plt.title('title',   fontdict=font1/2, loc='center/left/right')
+[]    plt.xlabel('X-Axis', fontdict=font1/2, )
+[]    plt.ylabel('Y-Axis', fontdict=font1/2, )
+[]
+[]    plt.grid(axis='x/y', color = 'green', linestyle = '--', linewidth = 0.5)
+[]    plt.legend()       <--displays a legend with 'label' names for all line/scatter colors.
+[]    plt.show()
+[]
+
+    # Subplots: A few plot graph diagrams in the same window.
+    # plt.subplot(row, column, n^th_plot)
+    # https://www.w3schools.com/python/matplotlib_subplots.asp
+[]
+[]    plt.subplot(1,2,1)    <--First plot (left) of two columns [1] [2]
+[]    plt.plot(x1, y1)
+[]    plt.title('Plot 01')
+[]
+[]    plt.subplot(1,2,2)    <--Second plot (right) of two columns [1] [2]
+[]    plt.plot(x2, y2)
+[]    plt.title('Plot 02')
+[]
+[]    plt.suptitle('All Plots')   <-- Title for whole window/all plots.
+[]    plt.show()
+[]
+
+    # Scatter Plots: Doesn't have lines connecting points.
+    # Default color of plot #1=blue, #2=orange...
+[]
+[]    x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+[]    y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+[]    plt.scatter(
+[]              x,
+[]              y,
+[]              label='name'
+[]              color='r'      Color for all points.
+[]              c=col_list     Color for each point. A pre-defined list of colors, arranged accordingly.
+[]                             *Same length as x,y value list.
+[]                               []  col_list = np.array(["red","green","blue","yellow","cyan","magenta"])
+[]                             Or opt to use a color map that assigns an int val to each color in range.
+[]                               []  colors = np.array([0, 10, 20, 30, ... 90, 100])    <--cmap val ranges from 0-100
+[]              cmap='viridis'   []  plt.scatter(x, y, c=colors, cmap='viridis')
+[]                               []  plt.colorbar()    <--displays colormap beside scatter plot
+[]                               https://www.w3schools.com/python/matplotlib_scatter.asp
+[]              s=size_list    Size of each point. A pre-defined list of sizes, arranged accordingly.
+[]                             *Same length as x,y value list.
+[]                              []  size_list = np.array([20,50,100, ... 600,800,75])
+[]              alpha=0.5      Transparency value of all points.
+[]               )
+[]    plt.show()
+[]
+
+    # Bar graphs https://www.w3schools.com/python/matplotlib_bars.asp
+[]
+[]    x = np.array(["A", "B", "C", "D"])
+[]    y = np.array([3, 8, 1, 10])
+[]
+[]    plt.bar(x, y, color='r', width=0.8)     <--Vertical bars ||
+[]    plt.barh(x, y, color='r', height=0.8)    <--Horizontal bars ==
+[]    plt.show()
+[]
+
+    # Histograms https://www.w3schools.com/python/matplotlib_histograms.asp
+[]
+[]    x = np.random.normal(170, 10, 250)  <--randomly generate an array with 250 values, where the values will
+[]                                           concentrate around 170, and the standard deviation is 10.
+[]    plt.hist(x)
+[]    plt.show()
+[]
+
+    # Pie Charts https://www.w3schools.com/python/matplotlib_pie_charts.asp
+    # Note: The size of each wedge is determined by comparing the value with all the other values, by using this formula:
+    # The value divided by the sum of all values: x/sum(x)
+    # Start_Angle: By default the plotting of the first wedge starts from the x-axis/3-o'clock and move counterclockwise
+    #              Angle: 0=3o'c 90=12o'c 180=9o'c 270=6o'c
+[]
+[]    y = np.array([35, 25, 25, 15])
+[]    my_labels = ["Apples", "Bananas", "Cherries", "Dates"]   <--labels for each wedge
+[]    my_explode = [0.2, 0, 0, 0]                              <--seperation for each wedge from center. aka pulling out a pizza slice
+[]    my_colors = ["black", "hotpink", "b", "#4CAF50"]         <--color for each wedge
+[]    plt.pie(
+[]          y,
+[]          labels=my_labels,
+[]          startangle=0-359,
+[]          explode=my_explode,
+[]          shadow=True/False,     <--shadow for all wedges
+[]          colors=my_colors
+[]          )
+[]          plt.legend(title='Four Fruits:')     <--shows a legend for each wedge's color & label
+[]    plt.show()
+[]

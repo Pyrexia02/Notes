@@ -158,14 +158,14 @@ Operator Precedence (PEMDAS)
 -----Logical Operators--------   and or not()
 
 -----Assignment Operators-----
-=	    x = 5     x = 5
+=	    x = 5          x = 5
 +=	    x += 3	  x = x + 3
 -=	    x -= 3	  x = x - 3
 *=	    x *= 3	  x = x * 3
 /=	    x /= 3	  x = x / 3
 %=	    x %= 3	  x = x % 3
-//=	    x //= 3   x = x // 3
-**=	    x **= 3   x = x ** 3
+//=	    x //= 3        x = x // 3
+**=	    x **= 3        x = x ** 3
 
 
 // ~!in ~!not
@@ -230,13 +230,13 @@ are then mapped to their respective characters (~!#$%abc123).
 NOT             ~       (assignment operation not avail: ~=)    10011100 --> 01100011
 
 AND             &	    x &= a	  x = x & a                     10011100 --> 00010100
-                                                                00110100
+                                                                          00110100
 
 OR              |	    x |= a	  x = x | a                     10011100 --> 10111100
-                                                                00110100
+                                                                          00110100
 
 XOR             ^	    x ^= a	  x = x ^ a                     10011100 --> 10101000 (same char =0, dif char =1)
-                                                                00110100
+                                                                          00110100
 
 Right Shift     >>	    x >>= b	  x = x >> b                    100111   --> 0100111  (adds 0 to the left of bits)
 Left shifts     <<	    x <<= b	  x = x << b                    100111   --> 1001110  (adds 0 to the right of bits)

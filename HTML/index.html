@@ -1,0 +1,193 @@
+<!--Read more about CSS on w3schools-->
+<link rel="stylesheet" type='text/css' href="https://fonts.googleapis.com/css?family=Lobster">
+
+<style media="screen">
+    p {color: red;}
+    h2 {color:blue;}
+
+    #heading{color: green, background-color: blue}
+
+    .thick-green-border{border-color:green; border-width:10px; border-style: solid; border-radius: 50%}
+    .larger-image{width: 500px}
+    .blue-text{color:blue; font-size: 30px; font-family: Helvetica, monospace, more_backup_fonts;}
+    .red-text{color:red; font-size: 20px; font-family: Lobster, 'Open Sans';}
+</style> <!--.class_name-->                       <!-- ^Import   ^Alternative-->
+         <!--in any html elem, i.e. <p class='class_name'>elems</p>-->
+         <!--ID starts with a #, HTML Prioritises IDs > Classes-->
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">    <!--metadata: a description to let search engines figure out what your web's about-->
+        <meta name="desciption" content="This is a random website">
+        <meta name="author" content="your_name">
+        <meta name="keywords" content="HTML Tutorial, blablabla, blablabla, list goes on">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--controls how web displays on diff devices-->
+
+        <title>Insert moving title</title>
+    </head>
+
+    <!--=====================================================================================================================-->
+
+    <body style="background-color:lightgrey;">
+        <header>
+            <nav>
+                <!--navigational links here-->
+                <a href="https://www.youtube.com/watch?v=2qQ4eHayRhU" target="_blank">Youtube: My recent project</a>
+                <a href="page2.html">Button to page 2</a>
+                <a href="dir1/page3.html">Button to page 3</a>
+
+            </nav>
+        </header>
+
+        <!--------------------------------------------------------------------------------------------------------------------->
+
+        <main>
+            <article>
+                <section>  <!--sections or other 'structural' tags are used to help search engines read through your
+                            web and display it better-->
+                h1
+                  h2
+                    h3
+                  h2    <!--hierachy for 'best' title-->
+                </section>
+                <section>
+                    <a class="thick-green-border" href="dir1/gohyiharn_mid.jpg">
+                        <img width="130" height="100"src="dir1/chicken.jpg" alt="<!--place alternative image here-->">
+                        <!--to keep ori image aspect ratio, you can opt to only adjust the width/height, HTML will work it all out-->
+                    </a>
+                    <h5 style="color: red;">^BUTTON TO SEE CHICKEN</h5>
+                    <!--https://www.youtube.com/watch?v=msSc7Mv0QHY-->
+                </section>
+                <section>
+                    <aside class="blue-text">
+                        <video src="<!--vid_file-->" autoplay poster="<!--thumbnail-->"  controls width='300'>
+                        </video>                   <!--can insert 'loop' here, anywhere ^-->
+                        <!--this whole para below is from youtube vides > share option > embed-->
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/msSc7Mv0QHY" title="YouTube video player"
+                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+
+                        <iframe src="<!--random web other than youtube-->" frameborder='0' width="" height=""></iframe>
+                        <!--However, lots of webs dont allow you to use their web in your web's iframes-->
+                        <!--insert ads here: unrelated items-->
+                    </aside>
+                </section>
+                <h2>My Website</h2>
+                <br/> <!--enter: break in html-->
+                <hr/> <!--this is a line-->
+                <br/>
+                <p><big>This</big> is <small>my</small> <b><i>first</i></b> para in html 😭</p>
+                <p>this is <i>another</i> para</p>
+                <section>
+                    <p>H<sub><small>2</small></sub>O</p>
+                    <p>x<sup><small>2</small></sup></p>
+                </section>
+                <h4 id="heading">ID in style starts with a #HASHTAG</h4>
+                <p style="color: red; background-color:blue;">You can style your HTML and make it look pretty</p>
+
+                <section>  <!--LISTS-->
+                    <ul>  <!--ul for unordered lists-->
+                        <!--container for LISTS in HTML-->
+                        <li><a href="#">Apples</a></li>
+                        <li>Oranges</li>
+                        <li>Bananas</li>
+                    </ul>
+                    <ol type="A">   <!--ol for ordered lists-->
+                        <li><a href="#">item1</a></li>
+                        <li><a href="#">item2</a></li>
+                    </ol>
+                    <dl class="red-text">   <!--dl for description lists, in list, use dt: description term-->
+                        <dt>Chickens</dt>
+                        <dt>- They have beaks</dt>
+                        <dt>- They have short legs</dt>
+                        <dt>- They have extremely loud clucks</dt>
+                        <dt>- They are just so <big>ANNOYING</big></dt>
+                    </dl>
+                </section>
+
+                <br><hr><br>
+
+                <section>  <!--TABLES-->
+                    <caption>List of Numbers</caption>
+                    <table>
+                        <thead>
+                            <tr>  <!--tr for table row-->
+                                <!--th for table header-->
+                                <th>num1</th>
+                                <th>num2</th>
+                                <th>num3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <!--td for table data-->
+                                <td colspan="2">one</td>  <!--colspam specifies how much column that item takes in the table-->
+                                <td>two</td>              <!--shifts other items' positions-->
+                                <td>three</td>
+                                <td>four</td>
+                                <td>no-header</td>
+                            </tr>
+                            <tr>
+                                <td>fourrrrrrrrrr</td>
+                                <td>five</td>
+                                <td><big>six</big></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <br><<hr><br>
+                <section>
+                    <!--CONTAINERS: Divs, Spans.     read more on CSS on w3schools: a language to style HTML-->
+                    <!--used to wrap html code-->
+                    <!--block css elems take up space of entire page, i.e. <p>para</p> -->
+                    <!--in-line css elems sit next to each other, i.e. <a>links</a> -->
+                    <!--divs are block containers-->
+                    <!--span are in-line containers-->
+                    <span>span1</span>
+                    <span>span2</span>
+
+                    <div>div1</div>
+                    <div>div2</div>
+                </section>
+
+                <br><hr><br>
+
+                <section>
+                    <!--INPUT & FORMS-->
+                    <!--using Javascript-->
+                    <input type="text" name="" value="Enter your name"> <!--regular textbox-->
+                    <input type="password" name="" value="Enter password"> <!--text hidden-->
+                    <input type='date' name="" value="">
+                    <input type="email" name="" value="">
+                    <input type="range" name="" value="">   <!--slider-->
+                    <input type="file" name="" value="">
+                    <input type='checkbox' name="" value="">
+                    <input type="radio" name="btn" value="">
+
+                    <textarea name="name" rows="8" cols="80">Enter a paragraph</textarea> <!--for comments,
+                                                                               resizable on real page if rows, cols not spec-->
+                    <input type="submit" name="SUBMIT" value="">
+
+
+                    <form class="" action="index.html" method="post">
+                        <!--form, another language to take inputs, made using microsoft.access?-->
+
+                    </form>
+                </section>
+
+
+            </article>
+        </main>
+
+        <!--=====================================================================================================================-->
+
+        <footer>
+        </footer>
+
+        <!--=====================================================================================================================-->
+
+    </body>
+</html>

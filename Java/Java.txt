@@ -308,6 +308,7 @@ In Java, there are two types of casting:
 
 	  []  int myInt = 9;
       []  double myDouble = myInt; // Automatic casting: int to double 9.0
+      * can also be used as: (double)int
 
 	2. Narrowing Casting (manually) - converting a larger type to a smaller size type
 	  double -> float -> long -> int -> char -> short -> byte
@@ -400,6 +401,20 @@ Logical       ||   OR i.e. (9==3||3!=9): (false||true): true
             *can be treated as regular mathematical methods, just that class=boolean
 
 Bitwise??
+
+=== Postfix Operator ===
+n++ Uses the original method, only incrememts by 1 in the next call
+n-- Uses the original method, only decrements by 1 in the next call
+
+=== Unary Operator ===
+++n Increments the number & uses it
+--n Decrements the number & uses it
+
+[]    int n1 = 3;
+[]    int n2 = n1++;
+[]    System.out.println(n2)
+[]    >>> 3
+
 
 ~!Math Methods (i.e. Math.max(x,y))
 Ref: https://www.w3schools.com/java/java_ref_math.asp
@@ -502,6 +517,7 @@ System.out.printf("format string", obj/var/val)
     %c char
     %s String
     %f float/Double
+    %e E-notation float (1.08e-10)
 
 
 i.e. System.out.printf("The current value of APL is %+,030.5f \n NEWLINE", 3142536.45856428329478237);
@@ -568,7 +584,13 @@ Floating-Point:  float      <in>.nextFloat();
                  double     <in>.nextDouble();
 
 Non primitive:   String     <in>.nextLine();  reads whole line i.e. "rfc arfc werf erfc",
-                                              also read NUMS.
+                                              also read NUMS. (Treats 'Enter' as '\n')
+
+[]    System.out.pritn("Enter num: ");
+[]    int n = in.nextInt();              <-- when you press 'enter' after typing the num,
+[]    in.nextLine();                     <-- the 'enter' or '\n' goes here (remove enetr buffer)
+[]    System.out.println("Enter name: ");
+[]    String name = in.nextLine();
 
 
 

@@ -18,13 +18,8 @@ Syntax:
 var1 = 20
 var2 <- 20
 
-#check class/datatypes:
-class(45)
 
-#print
-print("hello world")
-
-# vector methods
+============================================================================================================================================ ~!Vectors
 lisz = c("index1", "index2", "index3")    <-- c() combine method
 sort(lisz)
 length(lisz)
@@ -32,7 +27,8 @@ typeof(lisz)
 lisz[2]
 lisz_2 = unique(lisz)   <-- takes a vector argument and returns a vector with only the unique elements in that vector (removing all duplicates).
 
-#if-else
+
+============================================================================================================================================ ~!if-else
 if(x > 0) print("Non-negative number") else print("Negative number")
 
 if (TRUE){
@@ -45,45 +41,58 @@ if (TRUE){
 
 y <- if(x > 0) 5 else 6
 
-#common methods
+
+============================================================================================================================================ ~!common methods
+print("Hello World")
+class(45)        <-- checks class/data type
 sum(num1, num2, num3, ..)
 floor(num)
 ceiling(num)
 sqrt(num)
-
-#Pipelining H[G(f(x))]
-# The pipe operator, or %>%, helps increase the readability of data frame code by piping the value on its left into
-# the first argument of the function that follows it. For example:
-df %>%
-  head()
-# pipes the data frame df into the first argument of head(), becoming
-head(df)
-# The true power of pipes comes from the ability to link multiple function calls together.
-# In Brief: summary(select(df, -lat, -lon))
-artists = artists %>%
-  select(-country, -year_founded, -albums) %>%
-  head() %>%
-  filter(spotify_monthly_listeners>20000000, genre!='Hip Hop') %>%
-  head() %>%
-  arrange(desc(youtube_subscribers)) %>%
-  head()
+nrow(df/array/vector)
+ncol(df/array/vector)
 
 
-#installing packages
-install.packages("package_name")
-install.packages(c("pack1", "pack2", ..))
+============================================================================================================================================ ~!Pipelining H[G(f(x))]
+The pipe operator, or %>%, helps increase the readability of data frame code by piping the value on its left into
+the first argument of the function that follows it. For example:
 
-#importing packages !!! no ''/""
-library(package_name)
+[]    df %>%
+[]      head()
 
-#===================================================dplyr / readr
-# dplyr provides functions that solve many challenges that arise when organizing tabular data
-#   - select columns of a table
-#   - filter rows of a table
-#   - arrange rows of a table in order
+pipes the data frame df into the first argument of head(), becoming
 
-# A data frame/tibble is an R object that stores tabular data in a table structure made up of rows and columns.
-# While data frames can be created in R, they are usually imported with data from a CSV, an Excel spreadsheet, or a SQL query.
+[]    head(df)
+
+The true power of pipes comes from the ability to link multiple function calls together.
+In Brief: summary(select(df, -lat, -lon))
+
+[]    artists = artists %>%
+[]      select(-country, -year_founded, -albums) %>%
+[]      head() %>%
+[]      filter(spotify_monthly_listeners>20000000, genre!='Hip Hop') %>%
+[]      head() %>%
+[]      arrange(desc(youtube_subscribers)) %>%
+[]      head()
+
+
+============================================================================================================================================ ~!installing packages
+[]    install.packages("package_name")
+[]    install.packages(c("pack1", "pack2", ..))
+
+
+============================================================================================================================================ ~!importing packages !!! no ''/""
+[]    library(package_name)
+
+
+============================================================================================================================================ ~!dplyr / readr
+ dplyr provides functions that solve many challenges that arise when organizing tabular data
+   - select columns of a table
+   - filter rows of a table
+   - arrange rows of a table in order
+
+A data frame/tibble is an R object that stores tabular data in a table structure made up of rows and columns.
+While data frames can be created in R, they are usually imported with data from a CSV, an Excel spreadsheet, or a SQL query.
 
 #======== .CSV
 # CSV (comma separated values) is a text-only spreadsheet format. Example:
@@ -92,26 +101,38 @@ library(package_name)
 # value4,value5,value6
 
 #======== readr
-df = read_csv('file.csv')   <--df: data frame object
-write_csv(df, "location.csv")  <-- pass in df
+[]    df = read_csv('file.csv')   <--df: data frame object
+[]    write_csv(df, "location.csv")  <-- pass in df
 
 #======== dplyr
 # Each of the dplyr functions you will explore takes a data frame as its first argument.
-head(df, n)   <-- displays first n rows of data, default 6, optional n
-summary(df)   <-- MIN, Q1, Median, Mean, Q3, MAX for each numeric column,
-                  length, Class, mode for non-numerics
-Df = select(df, wanted_column1, wanted_colum2, ...)  <-- returns new df with selected cols only
-     select(df, -to_remove1, -to_remove2, ...)       <-- returns new df with selected cols rmvd
-Df = filter(df, conditions)                          <-- returns new df with rows that fulfill condition (> >= < <= == !=)
-     filter(df, first_name=='LimJiaYu' & age>25)
-     filter(df, first_name=='LimJiaYu' | age>25)
-     filter(df, !(first_name=='LimJiaYu'))
-Df = arrange(df, col_name)                           <-- returns new df arr asc according to col_name
-     arrange(df, desc(col_name))                     <-- returns new df arr desc according to col_name
-Df = mutate(df, NewCol1=Val/Exp, NewCol2=Val/Exp, ..)       <-- retuns a new df with added col & values evaluated
-     dogs = dogs %>%
-       mutate(avg_height = ((height_low_inches+height_high_inches)/2))
-Df = transmute(df, NewCol1=Val/Exp,.. , OldCol=OldCol)      <-- returns a new df with ONLY the specified cols
-Df = rename(df, newcolname1=oldname1, newcolname2=oldname2, ..)   <-- returns a new df with renamed columns
-Vc = names(df)       <-- returns a vector containing all col names of df
-Vc = colnames(df)    <-/
+[]    head(df, n)   <-- displays first n rows of data, default 6, optional n
+[]    summary(df)   <-- MIN, Q1, Median, Mean, Q3, MAX for each numeric column,
+[]                      length, Class, mode for non-numerics
+[]
+[]    Df = select(df, wanted_column1, wanted_colum2, ...)  <-- returns new df with selected cols only
+[]         select(df, -to_remove1, -to_remove2, ...)       <-- returns new df with selected cols rmvd
+[]    Df = filter(df, conditions)                          <-- returns new df with rows that fulfill condition (> >= < <= == !=)
+[]         filter(df, first_name=='LimJiaYu' & age>25)
+[]         filter(df, first_name=='LimJiaYu' | age>25)
+[]         filter(df, !(first_name=='LimJiaYu'))
+[]    Df = arrange(df, col_name)                           <-- returns new df arr asc according to col_name
+[]         arrange(df, desc(col_name))                     <-- returns new df arr desc according to col_name
+[]    Df = mutate(df, NewCol1=Val/Exp, NewCol2=Val/Exp, ..)       <-- retuns a new df with added col & values evaluated
+[]         dogs = dogs %>%
+[]           mutate(avg_height = ((height_low_inches+height_high_inches)/2))
+[]    Df = transmute(df, NewCol1=Val/Exp,.. , OldCol=OldCol)      <-- returns a new df with ONLY the specified cols
+[]    Df = rename(df, newcolname1=oldname1, newcolname2=oldname2, ..)   <-- returns a new df with renamed columns
+[]    Vc = names(df)       <-- returns a vector containing all col names of df
+[]    Vc = colnames(df)    <-/
+
+#======== Read from Multiple Files
+[]    Vc <- list.files(pattern = "file_.*csv")
+[]    df_list <- lapply(Vc,read_csv)
+[]    df <- bind_rows(df_list)
+
+The first line uses list.files() and a regular expression, a sequence of characters describing a pattern of text
+that should be matched, to find any file in the current directory that starts with 'file_' and has an extension
+of csv, storing the name of each file in a vector files.
+The second line uses lapply() to read each file in files into a data frame with read_csv(), storing the data frames in df_list
+The third line then concatenates all of those data frames together with dplyr’s bind_rows() function

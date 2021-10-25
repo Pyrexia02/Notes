@@ -516,7 +516,8 @@ System.out.printf("format string", obj/var/val)
     %b boolean
     %c char
     %s String
-    %f float/Double
+    %f fixed-point floating point
+    %g general floating point
     %e E-notation float (1.08e-10)
 
 
